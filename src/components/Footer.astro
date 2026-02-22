@@ -14,8 +14,8 @@ const year = new Date().getFullYear();
 const copyright = t.footer.copyright.replace("{year}", String(year));
 const raw = import.meta.env.BASE_URL;
 const base = raw.endsWith("/") ? raw : `${raw}/`;
-const homeHref = locale === "en" ? `${base}en/` : base;
-const localePath = locale === "en" ? `${base}en/` : base;
+const homeHref = locale === "he" ? `${base}he/` : base;
+const localePath = locale === "he" ? `${base}he/` : base;
 
 const navLinks = [
   { label: t.nav.services, href: `${homeHref}#services` },

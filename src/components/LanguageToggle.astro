@@ -9,7 +9,7 @@ interface Props {
 const { locale, label } = Astro.props;
 const raw = import.meta.env.BASE_URL;
 const base = raw.endsWith("/") ? raw : `${raw}/`;
-const targetHref = locale === "he" ? `${base}en/` : base;
+const targetHref = locale === "en" ? `${base}he/` : base;
 ---
 
 <a

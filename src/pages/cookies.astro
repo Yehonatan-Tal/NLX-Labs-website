@@ -5,7 +5,7 @@ import Nav from "@components/Nav.astro";
 import MobileMenu from "@components/MobileMenu.astro";
 import Footer from "@components/Footer.astro";
 
-const locale = "he" as const;
+const locale = "en" as const;
 const t = getTranslations(locale);
 const dir = getDirection(locale);
 const raw = import.meta.env.BASE_URL;
@@ -33,7 +33,7 @@ const base = raw.endsWith("/") ? raw : `${raw}/`;
           <svg class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
           </svg>
-          {"\u05d7\u05d6\u05e8\u05d4 \u05dc\u05d3\u05e3 \u05d4\u05d1\u05d9\u05ea"}
+          Back to Home
         </a>
       </div>
     </div>

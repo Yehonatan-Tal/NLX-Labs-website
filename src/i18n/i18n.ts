@@ -2,8 +2,8 @@ import type { Locale, Translations } from "./types";
 import en from "./en.json";
 import he from "./he.json";
 
-export const DEFAULT_LOCALE: Locale = "he";
-export const LOCALES: Locale[] = ["he", "en"];
+export const DEFAULT_LOCALE: Locale = "en";
+export const LOCALES: Locale[] = ["en", "he"];
 
 const translations: Record<Locale, Translations> = {
   en: en as Translations,
@@ -11,10 +11,10 @@ const translations: Record<Locale, Translations> = {
 };
 
 export function getLocaleFromUrl(url: URL): Locale {
-  // Check path-based locale: /base/en/ → "en"
+  // Check path-based locale: /base/he/ → "he"
   const path = url.pathname;
-  if (path.includes("/en/") || path.endsWith("/en")) {
-    return "en";
+  if (path.includes("/he/") || path.endsWith("/he")) {
+    return "he";
   }
   // Fallback: check query param for backwards compat
   const param = url.searchParams.get("lang");
@@ -40,11 +40,11 @@ export function getAlternateUrl(currentUrl: URL, locale: Locale): string {
   const raw = import.meta.env.BASE_URL || "/";
   const basePath = raw.endsWith("/") ? raw : `${raw}/`;
 
-  // Strip /en/ segment to get the Hebrew (default) path
-  const stripped = url.pathname.replace(/\/en(\/|$)/, "/");
+  // Strip /he/ segment to get the English (default) path
+  const stripped = url.pathname.replace(/\/he(\/|$)/, "/");
 
-  if (locale === "en") {
-    url.pathname = `${basePath}en${stripped.slice(basePath.length)}`;
+  if (locale === "he") {
+    url.pathname = `${basePath}he${stripped.slice(basePath.length)}`;
     // Ensure trailing slash
     if (!url.pathname.endsWith("/")) url.pathname += "/";
   } else {
