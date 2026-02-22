@@ -111,12 +111,12 @@ const heroBgUrl = `${base}images/heroCover2.avif`;
     position: absolute;
     inset: 0;
     background-image: var(--hero-bg);
-    background-size: contain;
-    background-position: center -150px;
+    background-size: cover;
+    background-position: center 20%;
     background-repeat: no-repeat;
     opacity: 1;
-    mask-image: radial-gradient(ellipse 45% 70% at 50% 30%, black 20%, rgba(0,0,0,0.5) 50%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse 45% 70% at 50% 30%, black 20%, rgba(0,0,0,0.5) 50%, transparent 80%);
+    mask-image: radial-gradient(ellipse 80% 50% at 50% 22%, black 15%, rgba(0,0,0,0.4) 50%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 22%, black 15%, rgba(0,0,0,0.4) 50%, transparent 78%);
   }
 
   .hero-frost {
@@ -125,8 +125,8 @@ const heroBgUrl = `${base}images/heroCover2.avif`;
     backdrop-filter: blur(32px) saturate(1.2);
     -webkit-backdrop-filter: blur(32px) saturate(1.2);
     background: rgba(0, 0, 0, 0.3);
-    mask-image: radial-gradient(ellipse 35% 55% at 50% 30%, transparent 45%, rgba(0,0,0,0.5) 62%, black 88%);
-    -webkit-mask-image: radial-gradient(ellipse 35% 55% at 50% 30%, transparent 45%, rgba(0,0,0,0.5) 62%, black 88%);
+    mask-image: radial-gradient(ellipse 65% 40% at 50% 22%, transparent 40%, rgba(0,0,0,0.5) 60%, black 85%);
+    -webkit-mask-image: radial-gradient(ellipse 65% 40% at 50% 22%, transparent 40%, rgba(0,0,0,0.5) 60%, black 85%);
   }
 
   /* Content: mobile — centered overlay */
@@ -154,6 +154,7 @@ const heroBgUrl = `${base}images/heroCover2.avif`;
 
     /* Image: larger, pushed up, radial fade into black on all edges */
     .hero-bg {
+      background-size: contain;
       background-position: center -160px;
       transform: scale(0.95);
       mask-image: radial-gradient(ellipse 54% 50% at 48% 36%, black 32%, rgba(0,0,0,0.35) 62%, transparent 88%);
