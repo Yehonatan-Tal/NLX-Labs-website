@@ -1,0 +1,33 @@
+---
+import { getLocaleFromUrl, getTranslations, getDirection } from "@i18n/i18n";
+import Layout from "@layouts/Layout.astro";
+import Nav from "@components/Nav.astro";
+import MobileMenu from "@components/MobileMenu.astro";
+import Hero from "@components/Hero.astro";
+import Services from "@components/Services.astro";
+import Process from "@components/Process.astro";
+import Industries from "@components/Industries.astro";
+import About from "@components/About.astro";
+import Contact from "@components/Contact.astro";
+import Footer from "@components/Footer.astro";
+import ScrollToTop from "@components/ScrollToTop.astro";
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = getTranslations(locale);
+const dir = getDirection(locale);
+---
+
+<Layout lang={locale} dir={dir} meta={t.meta} currentUrl={Astro.url}>
+  <Nav t={t.nav} locale={locale} />
+  <MobileMenu t={t.nav} locale={locale} />
+  <main id="main-content">
+    <Hero t={t.hero} />
+    <Services t={t.services} />
+    <Process t={t.process} />
+    <Industries t={t.industries} />
+    <About t={t.about} />
+    <Contact t={t.contact} locale={locale} />
+  </main>
+  <Footer t={t} locale={locale} />
+  <ScrollToTop label={t.common.scrollToTop} />
+</Layout>

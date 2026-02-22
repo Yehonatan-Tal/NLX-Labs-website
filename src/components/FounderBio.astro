@@ -1,0 +1,135 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  bio: string;
+}
+
+const { name, role, bio } = Astro.props;
+const paragraphs = bio.split("\n").filter((p) => p.trim());
+
+const raw = import.meta.env.BASE_URL;
+const base = raw.endsWith("/") ? raw : `${raw}/`;
+---
+
+<div class="founder-layout">
+  <!-- Portrait -->
+  <div class="founder-portrait-wrap">
+    <img
+      src={`${base}images/profile.png`}
+      alt={name}
+      class="founder-portrait"
+      width="320"
+      height="400"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Bio text -->
+  <div class="founder-text">
+    <h3 class="founder-name">{name}</h3>
+    <span class="founder-role">{role}</span>
+    {paragraphs.map((p) => (
+      <p class="founder-bio-p">{p}</p>
+    ))}
+  </div>
+</div>
+
+<style>
+  .founder-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .founder-layout {
+      flex-direction: row;
+      align-items: center;
+      gap: 3rem;
+    }
+  }
+
+  /* ── Portrait ── */
+  .founder-portrait-wrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 220px;
+  }
+
+  @media (min-width: 768px) {
+    .founder-portrait-wrap {
+      width: 280px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .founder-portrait-wrap {
+      width: 300px;
+    }
+  }
+
+  .founder-portrait {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Fade out the bottom so the cutout dissolves into the dark bg */
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
+  }
+
+  /* ── Text ── */
+  .founder-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .founder-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--color-dark-text);
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .founder-name {
+      font-size: 1.75rem;
+    }
+  }
+
+  .founder-role {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    opacity: 0.85;
+  }
+
+  .founder-bio-p {
+    margin-top: 1.25rem;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-dark-text-secondary);
+  }
+
+  .founder-bio-p:first-of-type {
+    margin-top: 1.5rem;
+  }
+
+  /* RTL: portrait on the right */
+  :global([dir="rtl"]) .founder-layout {
+    text-align: right;
+  }
+
+  @media (min-width: 768px) {
+    :global([dir="rtl"]) .founder-layout {
+      flex-direction: row-reverse;
+    }
+  }
+</style>

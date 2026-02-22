@@ -1,0 +1,226 @@
+{
+  "meta": {
+    "title": "NLX-labs | AI Solutions for Business",
+    "description": "Custom AI solutions that transform business operations. NLX-labs partners with SMBs to design, develop, and deploy tailored AI systems.",
+    "ogTitle": "NLX-labs | AI Solutions for Business",
+    "ogDescription": "Custom AI solutions that transform business operations. NLX-labs partners with SMBs to design, develop, and deploy tailored AI systems."
+  },
+  "nav": {
+    "services": "Services",
+    "process": "How We Work",
+    "industries": "Industries",
+    "about": "About",
+    "contact": "Contact",
+    "languageToggle": "HE",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "hero": {
+    "headline": "Tell us what's inefficient in your business. We'll build the AI to fix it.",
+    "subheadline": "NLX-labs partners with businesses to design, develop, and deploy custom AI solutions that deliver measurable results from day one.",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "Learn More"
+  },
+  "services": {
+    "title": "What We Do",
+    "subtitle": "Three core capabilities that transform your business operations",
+    "items": [
+      {
+        "title": "AI Engineering",
+        "description": "Deep technical capability in building AI-driven software systems, from intelligent automation to natural language processing and predictive analytics."
+      },
+      {
+        "title": "Business Process Analysis",
+        "description": "We listen, understand, and map your operational workflows, identifying exactly where AI creates genuine, measurable value for your business."
+      },
+      {
+        "title": "Tailored Implementation",
+        "description": "End-to-end delivery of custom solutions that integrate into your existing business infrastructure and produce results from day one."
+      }
+    ],
+    "positioningStatement": "We don't sell off-the-shelf products. Every solution is custom-built to your specific workflow and business needs."
+  },
+  "process": {
+    "title": "How We Work",
+    "subtitle": "A structured, collaborative approach from discovery to deployment",
+    "steps": [
+      {
+        "title": "Discovery & Scoping",
+        "description": "We work closely with you to understand your operations, identify high-impact opportunities for AI, and define a clear scope with expected outcomes."
+      },
+      {
+        "title": "Design & Development",
+        "description": "Full design, development, and testing of your AI solution with iterative feedback loops to ensure it meets your exact needs."
+      },
+      {
+        "title": "Deployment & Integration",
+        "description": "Seamless deployment into your operational environment with system integration, staff training, and documentation for smooth adoption."
+      },
+      {
+        "title": "Ongoing Support",
+        "description": "Continuous monitoring, optimization, and expansion. We're a long-term partner invested in your ongoing success."
+      }
+    ]
+  },
+  "industries": {
+    "title": "What does your industry look like, powered by AI?",
+    "subtitle": "Select your industry to explore how AI transforms daily operations",
+    "items": [
+      {
+        "name": "Logistics & Customs",
+        "examples": ["Document classification", "Compliance checking", "Shipment routing", "Regulatory form processing"],
+        "bullets": ["Classify and route shipping documents in seconds, not hours", "Flag compliance gaps before they reach customs authorities", "Optimize delivery routes in real-time with predictive demand", "Auto-fill regulatory forms from scanned cargo manifests"]
+      },
+      {
+        "name": "Education",
+        "examples": ["Adaptive assessments", "Admin workflow automation", "Student progress analytics", "Curriculum planning"],
+        "bullets": ["Generate adaptive assessments that match each student's level", "Automate admin tasks like attendance, grading, and reporting", "Identify at-risk students early with behavioral pattern analysis", "Build personalized learning paths based on real performance data"]
+      },
+      {
+        "name": "Financial Services",
+        "examples": ["Anomaly detection", "Automated reporting", "Client communication analysis", "Risk assessment"],
+        "bullets": ["Detect suspicious transactions in real-time with anomaly scoring", "Generate compliance reports automatically from raw transaction data", "Analyze client communications to surface sentiment and risk signals", "Score portfolio risk continuously with adaptive ML models"]
+      },
+      {
+        "name": "Legal",
+        "examples": ["Contract analysis", "Document review automation", "Case research", "Billing optimization"],
+        "bullets": ["Extract key clauses and flag risky language across contracts", "Accelerate case research by surfacing relevant precedents instantly", "Track billable hours automatically by linking tasks to matters", "Reduce manual document review time by up to 80%"]
+      },
+      {
+        "name": "Healthcare",
+        "examples": ["Scheduling optimization", "Patient communication", "Records management", "Insurance processing"],
+        "bullets": ["Optimize appointment schedules to reduce wait times and no-shows", "Automate patient follow-ups and medication reminders", "Process insurance claims faster with intelligent form extraction", "Surface critical patient data from unstructured clinical notes"]
+      },
+      {
+        "name": "Government",
+        "examples": ["Citizen service automation", "Permit processing", "Resource allocation"],
+        "bullets": ["Route citizen requests to the right department automatically", "Accelerate permit approvals with AI-assisted document review", "Allocate public resources based on real-time demand analytics", "Generate transparency reports from structured and unstructured data"]
+      },
+      {
+        "name": "Retail",
+        "examples": ["Inventory prediction", "Customer service automation", "Demand forecasting", "Supplier management"],
+        "bullets": ["Predict inventory needs before stockouts happen", "Resolve common customer inquiries instantly with AI agents", "Forecast demand spikes across locations and product categories", "Optimize pricing dynamically based on competitor and demand signals"]
+      }
+    ],
+    "closingStatement": "Don't see your industry? We work with any business that has processes to optimize.",
+    "closingCta": "Let's talk about yours"
+  },
+  "about": {
+    "title": "About NLX-labs",
+    "subtitle": "Making AI accessible for every business",
+    "narrative": "Founded in 2026 in Israel, NLX-labs exists to make artificial intelligence accessible and actionable for businesses that don't have in-house AI capabilities. We believe the transformative power of AI should not be exclusive to tech companies or large enterprises. We listen first, engineer second, and build long-term partnerships that grow with your business.",
+    "principlesTab": "Our Principles",
+    "founderTab": "Meet the Founder",
+    "principlesTitle": "Our Guiding Principles",
+    "founder": {
+      "name": "Yonatan Tal",
+      "role": "Founder & Lead Developer",
+      "bio": "Yonatan Tal is the founder and lead developer behind NLX-labs. Before launching the company, he worked as an LLM developer in the Israeli startup scene — building the demo that helped one startup secure its initial funding round, and later joining the core engineering team to lead their language model product development. He's not just familiar with AI; he's built, fine-tuned, and shipped language models in production environments.\n\nYonatan combines deep expertise in large language models, NLP, and machine learning with full-stack engineering skills — meaning he can take a project from initial concept through architecture, development, and deployment without the overhead of a large team. When you work with NLX-labs, you work directly with the person who designs and builds your solution."
+    },
+    "principles": [
+      {
+        "title": "Client Knowledge Leads",
+        "description": "You know your business better than anyone. We translate that knowledge into intelligent systems."
+      },
+      {
+        "title": "Honest Assessment",
+        "description": "If AI isn't the right solution, we'll tell you. Trust is built through candor."
+      },
+      {
+        "title": "Measurable Outcomes",
+        "description": "Every project has clear, quantifiable success criteria defined before development begins."
+      },
+      {
+        "title": "Build for Independence",
+        "description": "We build systems you can own and operate. Our goal is to empower, not create dependency."
+      },
+      {
+        "title": "Responsible AI",
+        "description": "Transparency, fairness, and data privacy at the core. Every system we build is explainable and ethical."
+      },
+      {
+        "title": "Grow Through Excellence",
+        "description": "The best marketing is a client whose business was measurably improved."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Let's Talk",
+    "subtitle": "Ready to explore what AI can do for your business?",
+    "intro": "Tell us about your business challenge. We'll get back to you within one business day to discuss how we can help.",
+    "emailLabel": "Or email us directly:",
+    "whatsappLabel": "Chat on WhatsApp",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email",
+      "emailPlaceholder": "john@company.com",
+      "company": "Company",
+      "companyPlaceholder": "Company Name",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "+972-XX-XXX-XXXX",
+      "message": "Tell us about your project",
+      "messagePlaceholder": "Describe the business challenge you'd like to solve...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "successTitle": "Message Sent!",
+      "successMessage": "Thank you for reaching out. We'll get back to you within one business day.",
+      "errorTitle": "Something went wrong",
+      "errorMessage": "Please try again or email us directly."
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "nameMin": "Name must be at least 2 characters",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email",
+      "companyRequired": "Company name is required",
+      "companyMin": "Company name must be at least 2 characters",
+      "phoneInvalid": "Please enter a valid phone number",
+      "messageRequired": "Message is required",
+      "messageMin": "Message must be at least 10 characters"
+    }
+  },
+  "footer": {
+    "copyright": "\u00a9 {year} NLX Labs AI Solutions. All rights reserved.",
+    "tagline": "Custom AI solutions that transform business operations.",
+    "location": "Israel | Building AI OS Globally",
+    "navigationTitle": "Navigation",
+    "legalTitle": "Legal",
+    "contactTitle": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "accessibility": "Accessibility",
+    "whatsappChat": "WhatsApp",
+    "followTitle": "Follow Us"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: February 2026",
+    "content": "<h2>Information We Collect</h2><p>When you use our contact form, we collect the information you provide: your name, email address, company name, phone number (if provided), and your message. This data is processed through Formspree, a third-party form handling service.</p><h2>How We Use Your Information</h2><p>We use the information you submit solely to respond to your inquiry and to communicate with you about our services. We do not sell, rent, or share your personal information with third parties for marketing purposes.</p><h2>Contact Form Data</h2><p>Our contact form is powered by Formspree. When you submit the form, your data is transmitted to and stored by Formspree in accordance with their privacy policy. We encourage you to review Formspree's privacy policy for details on their data handling practices.</p><h2>Cookies and Tracking</h2><p>This website does not use cookies or any analytics tracking tools. We do not collect any data about your browsing behavior.</p><h2>Your Rights</h2><p>You have the right to request access to, correction of, or deletion of any personal data we hold about you. To exercise these rights, please contact us using the information below.</p><h2>Contact Us</h2><p>If you have questions about this privacy policy or wish to exercise your data rights, please email us at contact@nlx-labs.com.</p>"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: February 2026",
+    "content": "<h2>Acceptance of Terms</h2><p>By accessing and using the NLX-labs website and services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services.</p><h2>Services Description</h2><p>NLX-labs provides custom AI consulting, development, and implementation services for businesses. The specific scope, deliverables, and terms of each project are defined in individual service agreements between NLX-labs and the client.</p><h2>Intellectual Property</h2><p>All content on this website, including text, graphics, logos, and software, is the property of NLX-labs and is protected by intellectual property laws. Client-specific deliverables are governed by the terms of the applicable service agreement.</p><h2>User Conduct</h2><p>You agree to use this website only for lawful purposes and in a manner that does not infringe upon the rights of others or restrict their use of the website.</p><h2>Limitation of Liability</h2><p>NLX-labs provides this website and its content on an \"as is\" basis. We make no warranties, express or implied, regarding the accuracy, completeness, or reliability of any content. NLX-labs shall not be liable for any indirect, incidental, or consequential damages arising from your use of this website.</p><h2>Governing Law</h2><p>These terms are governed by and construed in accordance with the laws of the State of Israel. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts in Israel.</p><h2>Modifications</h2><p>NLX-labs reserves the right to modify these terms at any time. Changes will be posted on this page with an updated revision date. Continued use of the website after modifications constitutes acceptance of the updated terms.</p><h2>Contact Us</h2><p>If you have questions about these Terms of Service, please contact us at contact@nlx-labs.com.</p>"
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "lastUpdated": "Last updated: February 2026",
+    "content": "<h2>What Are Cookies</h2><p>Cookies are small text files that are stored on your device when you visit a website. They are widely used to make websites work more efficiently and to provide information to website owners.</p><h2>Our Cookie Usage</h2><p>NLX-labs does not use cookies or any similar tracking technologies on this website. We do not collect any data about your browsing behavior, and no cookies are set when you visit our site.</p><h2>Third-Party Services</h2><p>Our contact form is powered by Formspree, a third-party service. When you submit the contact form, Formspree may use cookies or similar technologies as part of their service. We encourage you to review Formspree's privacy and cookie policies for more information.</p><h2>Changes to This Policy</h2><p>If we decide to use cookies in the future, we will update this policy and notify users accordingly. Any changes will be posted on this page with an updated revision date.</p><h2>Contact Us</h2><p>If you have questions about our cookie practices, please contact us at contact@nlx-labs.com.</p>"
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "lastUpdated": "Last updated: February 2026",
+    "content": "<h2>Our Commitment</h2><p>NLX-labs is committed to ensuring that our website is accessible to all users, including people with disabilities. We strive to meet the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards.</p><h2>Accessibility Features</h2><p>Our website includes the following accessibility features: semantic HTML structure for screen reader compatibility, keyboard navigation support throughout the site, sufficient color contrast ratios for text readability, responsive design that adapts to different screen sizes and zoom levels, skip-to-content navigation links, and support for reduced motion preferences.</p><h2>Ongoing Efforts</h2><p>We continuously review and improve our website to enhance accessibility. Our development process includes accessibility testing and we welcome feedback from users about their experience.</p><h2>Feedback</h2><p>If you encounter any accessibility barriers or have suggestions for improvement, please contact us at contact@nlx-labs.com. We take all feedback seriously and will work to address any issues promptly.</p>"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to Home"
+  },
+  "common": {
+    "scrollToTop": "Scroll to top",
+    "skipToContent": "Skip to main content"
+  }
+}

@@ -1,0 +1,38 @@
+---
+import type { Locale } from "@i18n/types";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "NLX-labs",
+  alternateName: "Natural Language Experiments Laboratory",
+  url: "https://yehonatan-tal.github.io/NLX-Labs-website",
+  description:
+    locale === "he"
+      ? "פתרונות בינה מלאכותית מותאמים אישית לעסקים קטנים ובינוניים"
+      : "Custom AI solutions for small and medium businesses",
+  foundingDate: "2026",
+  foundingLocation: {
+    "@type": "Place",
+    name: "Israel",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Israel",
+  },
+  knowsAbout: [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Natural Language Processing",
+    "Business Process Automation",
+  ],
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

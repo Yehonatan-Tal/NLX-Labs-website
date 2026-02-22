@@ -1,0 +1,1271 @@
+---
+interface Props {
+  steps: Array<{ title: string; description: string }>;
+}
+
+const { steps } = Astro.props;
+---
+
+<div class="process-dashboard">
+  <!-- Phase Description Terminal (above dashboard, inherits page dir for RTL) -->
+  <div class="db-output" aria-hidden="true">
+    <div class="db-output-chrome" dir="ltr">
+      <div class="db-output-dots">
+        <span class="db-dot" style="background:#ff5f57"></span>
+        <span class="db-dot" style="background:#febc2e"></span>
+        <span class="db-dot" style="background:#28c840"></span>
+      </div>
+      <span class="db-output-title">nlx — zsh — 80×24</span>
+    </div>
+    <div class="db-output-body">
+      <div class="db-output-line">
+        <span class="db-output-prefix" aria-hidden="true">&#10095;</span>
+        <span class="db-type-title"></span>
+      </div>
+      <div class="db-output-line db-output-line--desc">
+        <span class="db-type-desc"></span><span class="db-type-cursor">█</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OS Screen Frame with glass border -->
+  <div class="db-frame">
+  <div class="db-screen" dir="ltr">
+    <!-- Dashboard background image (behind glass, clipped by db-screen overflow:hidden) -->
+    <img
+      class="db-bg-image"
+      src={`${import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/'}images/dashboard-bg.avif`}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+    />
+
+    <!-- macOS Menu Bar -->
+    <div class="db-menubar" aria-hidden="true">
+      <div class="db-menubar-left">
+        <span class="db-apple-logo">&#63743;</span>
+        <span class="db-menu-app">NLX</span>
+        <span class="db-menu-item">File</span>
+        <span class="db-menu-item">Edit</span>
+        <span class="db-menu-item">View</span>
+        <span class="db-menu-item">Go</span>
+        <span class="db-menu-item">Window</span>
+        <span class="db-menu-item">Help</span>
+      </div>
+      <div class="db-menubar-right">
+        <span class="db-tray-icon">&#9881;</span>
+        <span class="db-tray-icon">&#9889;</span>
+        <span class="db-tray-sep">|</span>
+        <span class="db-tray-clock">Mon Feb 16&ensp;9:41 AM</span>
+      </div>
+    </div>
+
+    <!-- App Window (inside OS frame) -->
+    <div class="db-window">
+      <!-- Window Chrome -->
+      <div class="db-chrome">
+        <div class="db-dots" aria-hidden="true">
+          <span class="db-dot" style="background:#ff5f57"></span>
+          <span class="db-dot" style="background:#febc2e"></span>
+          <span class="db-dot" style="background:#28c840"></span>
+        </div>
+        <div class="db-tabs" role="tablist" aria-label="Development phases">
+          <button class="db-tab" role="tab" aria-selected="true" data-phase="0">
+            <span class="db-tab-num">01</span> Discovery
+          </button>
+          <button class="db-tab" role="tab" aria-selected="false" data-phase="1">
+            <span class="db-tab-num">02</span> Design
+          </button>
+          <button class="db-tab" role="tab" aria-selected="false" data-phase="2">
+            <span class="db-tab-num">03</span> Deploy
+          </button>
+          <button class="db-tab" role="tab" aria-selected="false" data-phase="3">
+            <span class="db-tab-num">04</span> Support
+          </button>
+        </div>
+      </div>
+
+    <!-- Terminal Line -->
+    <div class="db-terminal">
+      <span class="db-prompt">$</span>
+      <span class="db-command">nlx analyze --workflow client_ops</span><span class="db-cursor" aria-hidden="true">█</span>
+    </div>
+
+    <!-- Phase Panels -->
+    <div class="db-body">
+      <!-- Phase 0: Discovery -->
+      <div class="db-phase db-phase-active" data-phase-panel="0" role="tabpanel">
+        <div class="db-panel">
+          <div class="db-panel-label">Workflow Map</div>
+          <svg class="db-node-graph" viewBox="0 0 180 100" fill="none" aria-hidden="true">
+            <line x1="28" y1="25" x2="90" y2="15" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
+            <line x1="90" y1="15" x2="152" y2="30" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
+            <line x1="28" y1="25" x2="55" y2="75" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
+            <line x1="55" y1="75" x2="125" y2="72" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
+            <line x1="125" y1="72" x2="152" y2="30" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
+            <line x1="90" y1="15" x2="55" y2="75" stroke="rgba(224,104,90,0.15)" stroke-width="1"/>
+            <circle cx="28" cy="25" r="5" class="db-node" style="animation-delay:0s"/>
+            <circle cx="90" cy="15" r="5" class="db-node" style="animation-delay:0.4s"/>
+            <circle cx="152" cy="30" r="5" class="db-node" style="animation-delay:0.8s"/>
+            <circle cx="55" cy="75" r="5" class="db-node" style="animation-delay:1.2s"/>
+            <circle cx="125" cy="72" r="5" class="db-node" style="animation-delay:1.6s"/>
+          </svg>
+        </div>
+        <div class="db-panel">
+          <div class="db-panel-label">Opportunity Analysis</div>
+          <div class="db-findings">
+            <div class="db-finding"><span class="db-indicator" style="background:#28c840"></span> Invoice processing: 12h &rarr; 2h</div>
+            <div class="db-finding"><span class="db-indicator" style="background:#28c840"></span> Data entry errors: &minus;87%</div>
+            <div class="db-finding"><span class="db-indicator" style="background:#febc2e"></span> Report generation: 4h &rarr; 15min</div>
+            <div class="db-finding"><span class="db-indicator" style="background:#28c840"></span> Client response time: &minus;62%</div>
+          </div>
+        </div>
+        <div class="db-panel">
+          <div class="db-panel-label">Project Scope</div>
+          <div class="db-stats">
+            <div class="db-stat">
+              <div class="db-stat-value">340%</div>
+              <div class="db-stat-label">Est. ROI</div>
+            </div>
+            <div class="db-stat">
+              <div class="db-stat-value">8 wks</div>
+              <div class="db-stat-label">Timeline</div>
+            </div>
+            <div class="db-stat">
+              <div class="db-stat-value" style="color:#28c840">High</div>
+              <div class="db-stat-label">Priority</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 1: Design -->
+      <div class="db-phase" data-phase-panel="1" role="tabpanel">
+        <div class="db-panel">
+          <div class="db-panel-label">Architecture</div>
+          <div class="db-arch">
+            <div class="db-arch-box">Data Layer</div>
+            <div class="db-arch-connector" aria-hidden="true"></div>
+            <div class="db-arch-box">ML Model</div>
+            <div class="db-arch-connector" aria-hidden="true"></div>
+            <div class="db-arch-box">REST API</div>
+            <div class="db-arch-connector" aria-hidden="true"></div>
+            <div class="db-arch-box">Client App</div>
+          </div>
+        </div>
+        <div class="db-panel">
+          <div class="db-panel-label">Model Training</div>
+          <div class="db-metrics">
+            <div class="db-metric">
+              <div class="db-metric-row"><span>Accuracy</span><span>94%</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:94%"></div></div>
+            </div>
+            <div class="db-metric">
+              <div class="db-metric-row"><span>Precision</span><span>91%</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:91%"></div></div>
+            </div>
+            <div class="db-metric">
+              <div class="db-metric-row"><span>Recall</span><span>89%</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:89%"></div></div>
+            </div>
+            <div class="db-metric">
+              <div class="db-metric-row"><span>F1 Score</span><span>92%</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:92%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="db-panel">
+          <div class="db-panel-label">Test Results</div>
+          <div class="db-checklist">
+            <div class="db-check"><span class="db-checkmark">&#10003;</span> Unit tests passed</div>
+            <div class="db-check"><span class="db-checkmark">&#10003;</span> Integration tests passed</div>
+            <div class="db-check"><span class="db-checkmark">&#10003;</span> Edge case validation</div>
+            <div class="db-check"><span class="db-checkmark">&#10003;</span> Performance benchmarks</div>
+            <div class="db-check"><span class="db-checkmark">&#10003;</span> Security audit complete</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2: Deploy -->
+      <div class="db-phase" data-phase-panel="2" role="tabpanel">
+        <div class="db-panel">
+          <div class="db-panel-label">Activity Feed</div>
+          <div class="db-log">
+            <div class="db-log-entry"><span class="db-log-time">14:32:01</span> Deploying to production...</div>
+            <div class="db-log-entry"><span class="db-log-time">14:32:04</span> Container images built</div>
+            <div class="db-log-entry"><span class="db-log-time">14:32:08</span> Health checks passing</div>
+            <div class="db-log-entry"><span class="db-log-time">14:32:12</span> DNS propagation complete</div>
+            <div class="db-log-entry"><span class="db-log-time">14:32:15</span> <span style="color:#28c840">&#10003; Live</span></div>
+          </div>
+        </div>
+        <div class="db-panel">
+          <div class="db-panel-label">Live Metrics</div>
+          <div class="db-metrics">
+            <div class="db-metric">
+              <div class="db-metric-row"><span>Uptime</span><span>99.9%</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:99.9%"></div></div>
+            </div>
+            <div class="db-metric">
+              <div class="db-metric-row"><span>Latency</span><span>45ms</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:15%;background:#28c840"></div></div>
+            </div>
+            <div class="db-metric">
+              <div class="db-metric-row"><span>Throughput</span><span>1.2k/s</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:72%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="db-panel">
+          <div class="db-panel-label">System Status</div>
+          <div class="db-statuses">
+            <div class="db-status-item"><span class="db-status-dot"></span><span>API Gateway</span><span class="db-status-online">Online</span></div>
+            <div class="db-status-item"><span class="db-status-dot"></span><span>ML Pipeline</span><span class="db-status-online">Online</span></div>
+            <div class="db-status-item"><span class="db-status-dot"></span><span>Database</span><span class="db-status-online">Online</span></div>
+            <div class="db-status-item"><span class="db-status-dot"></span><span>Cache Layer</span><span class="db-status-online">Online</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3: Support -->
+      <div class="db-phase" data-phase-panel="3" role="tabpanel">
+        <div class="db-panel">
+          <div class="db-panel-label">Performance</div>
+          <svg class="db-chart" viewBox="0 0 180 80" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--color-accent)"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </linearGradient>
+            </defs>
+            <polyline class="db-chart-area" points="0,68 25,62 50,55 75,48 100,38 125,28 150,18 180,10 180,80 0,80" fill="url(#chartGrad)" opacity="0.3"/>
+            <polyline class="db-chart-line" points="0,68 25,62 50,55 75,48 100,38 125,28 150,18 180,10" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="db-panel">
+          <div class="db-panel-label">Optimization Log</div>
+          <div class="db-opt-log">
+            <div class="db-opt-entry"><span class="db-opt-date">Feb 14</span> Cache hit ratio +12%</div>
+            <div class="db-opt-entry"><span class="db-opt-date">Feb 11</span> Query optimization deployed</div>
+            <div class="db-opt-entry"><span class="db-opt-date">Feb 08</span> Model retrained on new data</div>
+            <div class="db-opt-entry"><span class="db-opt-date">Feb 05</span> Memory allocation improved</div>
+          </div>
+        </div>
+        <div class="db-panel">
+          <div class="db-panel-label">System Health</div>
+          <div class="db-health">
+            <div class="db-metric">
+              <div class="db-metric-row"><span>CPU</span><span>23%</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:23%;background:#28c840"></div></div>
+            </div>
+            <div class="db-metric">
+              <div class="db-metric-row"><span>Memory</span><span>61%</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:61%;background:#febc2e"></div></div>
+            </div>
+            <div class="db-metric">
+              <div class="db-metric-row"><span>Disk</span><span>44%</span></div>
+              <div class="db-bar"><div class="db-bar-fill" style="--bar-w:44%;background:#28c840"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="db-progress">
+      <div class="db-progress-bar" style="width:25%"></div>
+    </div>
+    </div><!-- /db-window -->
+  </div><!-- /db-screen -->
+  </div><!-- /db-frame -->
+
+  <!-- Phase descriptions (data source + accessible text, visually hidden) -->
+  <div class="db-description">
+    {steps.map((step, i) => (
+      <div class="db-desc" data-desc={i}>
+        <h3>{step.title}</h3>
+        <p>{step.description}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  /* ── Layout ── */
+  .process-dashboard {
+    margin-top: 3rem;
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  /* ── Dashboard background image (inside db-screen, behind glass) ── */
+  .db-bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Glass Frame (two highlight lines with frosted gray channel) ── */
+  .db-frame {
+    position: relative;
+    z-index: 1;
+    border-radius: 18px;
+    padding: 4px;
+    background: rgba(120, 130, 150, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.12),
+      0 0 28px rgba(255, 255, 255, 0.08),
+      0 0 50px rgba(255, 255, 255, 0.04),
+      0 4px 16px rgba(0, 0, 0, 0.2),
+      0 12px 48px rgba(0, 0, 0, 0.15);
+    animation: glow-breathe 8s ease-in-out infinite;
+  }
+
+  @keyframes glow-breathe {
+    0%, 100% {
+      box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.10),
+        0 0 28px rgba(255, 255, 255, 0.06),
+        0 0 50px rgba(255, 255, 255, 0.03),
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        0 12px 48px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+      box-shadow:
+        0 0 14px rgba(255, 255, 255, 0.22),
+        0 0 32px rgba(255, 255, 255, 0.14),
+        0 0 56px rgba(255, 255, 255, 0.06),
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        0 12px 48px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  /* ── OS Screen (inner highlight + content) ── */
+  .db-screen {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #0c1022;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* ── macOS Menu Bar ── */
+  .db-menubar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    height: 26px;
+    background: rgba(30, 34, 44, 0.85);
+    -webkit-backdrop-filter: blur(24px) saturate(1.3);
+    backdrop-filter: blur(24px) saturate(1.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.7);
+    user-select: none;
+  }
+
+  .db-menubar-left,
+  .db-menubar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .db-apple-logo {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  .db-menu-app {
+    font-weight: 600;
+  }
+
+  .db-menu-item {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+  }
+
+  .db-tray-icon {
+    font-size: 12px;
+    opacity: 0.6;
+  }
+
+  .db-tray-sep {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 10px;
+  }
+
+  .db-tray-clock {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* ── Dashboard Window (inside OS frame) — transparent so bg image shows through ── */
+  .db-window {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  /* Gradient top-edge glow ("lit from above") */
+  .db-window::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(224, 104, 90, 0.4), transparent);
+    z-index: 2;
+  }
+
+  /* ── Window Chrome ── */
+  .db-chrome {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 16px;
+    background: rgba(15, 20, 30, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+
+  .db-dots {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .db-dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .db-tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .db-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .db-tab {
+    padding: 5px 12px;
+    font-size: 12px;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: rgba(255, 255, 255, 0.45);
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+
+  .db-tab:hover {
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .db-tab[aria-selected="true"] {
+    color: var(--color-accent);
+    background: rgba(224, 104, 90, 0.1);
+    border-color: rgba(224, 104, 90, 0.2);
+  }
+
+  .db-tab-num {
+    font-weight: 600;
+    opacity: 0.6;
+  }
+
+  .db-tab[aria-selected="true"] .db-tab-num {
+    opacity: 1;
+  }
+
+  /* ── Terminal ── */
+  .db-terminal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(10, 14, 24, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+
+  .db-prompt {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .db-command {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .db-cursor {
+    animation: blink 1s step-end infinite;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  /* ── Body & Panels ── */
+  .db-body {
+    min-height: 220px;
+  }
+
+  .db-phase {
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .db-phase-active {
+    display: grid;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .db-panel {
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    /* Glass starts clear — animated in via glassIn */
+    background: rgba(10, 14, 24, 0);
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+  }
+
+  .db-phase-active .db-panel {
+    animation: glassIn 0.5s ease-out forwards;
+  }
+
+  .db-phase-active .db-panel:nth-child(1) { animation-delay: 0.05s; }
+  .db-phase-active .db-panel:nth-child(2) { animation-delay: 0.15s; }
+  .db-phase-active .db-panel:nth-child(3) { animation-delay: 0.25s; }
+
+  .db-panel-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 10px;
+  }
+
+  /* ── Phase 0: Discovery — Node Graph ── */
+  .db-node-graph {
+    width: 100%;
+    height: auto;
+  }
+
+  .db-node {
+    fill: var(--color-accent);
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .db-phase-active .db-node {
+    animation: node-pulse 2s ease-in-out infinite;
+  }
+
+  /* ── Phase 0: Discovery — Findings ── */
+  .db-findings {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .db-finding {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--color-dark-text-secondary);
+    line-height: 1.4;
+  }
+
+  .db-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px currentColor;
+  }
+
+  /* ── Phase 0: Discovery — Stats ── */
+  .db-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .db-stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1.2;
+    text-shadow: 0 0 12px rgba(224, 104, 90, 0.3);
+  }
+
+  .db-stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-dark-text-secondary);
+    margin-top: 2px;
+  }
+
+  /* ── Phase 1: Design — Architecture ── */
+  .db-arch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .db-arch-box {
+    width: 100%;
+    text-align: center;
+    padding: 7px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-dark-text);
+    background: rgba(224, 104, 90, 0.1);
+    border: 1px solid rgba(224, 104, 90, 0.25);
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(224, 104, 90, 0.08);
+  }
+
+  .db-arch-connector {
+    width: 1px;
+    height: 8px;
+    background: rgba(224, 104, 90, 0.3);
+  }
+
+  /* ── Shared: Metric Bars ── */
+  .db-metrics,
+  .db-health {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .db-metric-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--color-dark-text-secondary);
+    margin-bottom: 4px;
+  }
+
+  .db-bar {
+    height: 5px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .db-bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-accent), #f0917e);
+    border-radius: 3px;
+    transition: width 0.8s ease-out;
+    box-shadow: 0 0 6px rgba(224, 104, 90, 0.3);
+  }
+
+  .db-phase-active .db-bar-fill {
+    width: var(--bar-w);
+  }
+
+  /* ── Phase 1: Design — Checklist ── */
+  .db-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .db-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--color-dark-text-secondary);
+    line-height: 1.4;
+  }
+
+  .db-checkmark {
+    color: #34d058;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-shadow: 0 0 8px rgba(52, 208, 88, 0.4);
+  }
+
+  /* ── Phase 2: Deploy — Activity Log ── */
+  .db-log {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .db-log-entry {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-dark-text-secondary);
+    line-height: 1.5;
+  }
+
+  .db-log-time {
+    color: rgba(255, 255, 255, 0.3);
+    margin-right: 6px;
+  }
+
+  /* ── Phase 2: Deploy — Status Dots ── */
+  .db-statuses {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .db-status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--color-dark-text-secondary);
+  }
+
+  .db-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #34d058;
+    box-shadow: 0 0 8px rgba(52, 208, 88, 0.5), 0 0 16px rgba(52, 208, 88, 0.2);
+    flex-shrink: 0;
+  }
+
+  .db-status-online {
+    margin-left: auto;
+    color: #34d058;
+    font-size: 11px;
+    font-weight: 500;
+    text-shadow: 0 0 8px rgba(52, 208, 88, 0.3);
+  }
+
+  /* ── Phase 3: Support — Chart ── */
+  .db-chart {
+    width: 100%;
+    height: auto;
+  }
+
+  .db-chart-line {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    transition: stroke-dashoffset 1.5s ease-out;
+    filter: drop-shadow(0 0 4px rgba(224, 104, 90, 0.4));
+  }
+
+  .db-phase-active .db-chart-line {
+    stroke-dashoffset: 0;
+  }
+
+  /* ── Phase 3: Support — Optimization Log ── */
+  .db-opt-log {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .db-opt-entry {
+    font-size: 11px;
+    color: var(--color-dark-text-secondary);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    line-height: 1.4;
+  }
+
+  .db-opt-entry:last-child {
+    border-bottom: none;
+  }
+
+  .db-opt-date {
+    display: inline-block;
+    width: 46px;
+    color: var(--color-accent);
+    font-size: 10px;
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(224, 104, 90, 0.25);
+  }
+
+  /* ── Progress Bar ── */
+  .db-progress {
+    height: 3px;
+    background: rgba(10, 14, 24, 0.5);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .db-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent), #f0917e);
+    box-shadow: 0 0 8px rgba(224, 104, 90, 0.4);
+    transition: width 0.5s ease;
+  }
+
+  /* ── Description (data source, visually hidden) ── */
+  .db-description {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ── Phase Description Terminal (standalone, above dashboard) ── */
+  .db-output {
+    position: relative;
+    z-index: 1;
+    margin-top: -3rem;
+    margin-bottom: 1.5rem;
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transform-origin: center top;
+  }
+
+  .db-output-chrome {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .db-output-dots {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .db-output-title {
+    flex: 1;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.3);
+    user-select: none;
+  }
+
+  .db-output-body {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .db-output-line {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .db-output-prefix {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  .db-type-title {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-dark-text);
+    min-height: 1.4em;
+  }
+
+  .db-output-line--desc {
+    margin-top: 8px;
+    padding-inline-start: 34px;
+  }
+
+  .db-type-desc {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    color: var(--color-dark-text-secondary);
+    line-height: 1.7;
+  }
+
+  .db-type-cursor {
+    color: #28c840;
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    animation: blink 1s step-end infinite;
+    margin-inline-start: 2px;
+  }
+
+  /* ── Animations ── */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @keyframes node-pulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.4); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes glassIn {
+    from {
+      background: rgba(10, 14, 24, 0);
+      -webkit-backdrop-filter: blur(0px);
+      backdrop-filter: blur(0px);
+    }
+    to {
+      background: rgba(10, 14, 24, 0.45);
+      -webkit-backdrop-filter: blur(12px) saturate(1.2);
+      backdrop-filter: blur(12px) saturate(1.2);
+    }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .db-phase {
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .db-panel {
+      padding: 10px;
+    }
+
+    .db-stat-value {
+      font-size: 18px;
+    }
+
+    .db-menubar-right .db-tray-sep,
+    .db-menubar-right .db-tray-icon {
+      display: none;
+    }
+
+  }
+
+  @media (max-width: 640px) {
+    .db-menubar {
+      display: none;
+    }
+
+    .db-screen {
+      border-radius: 10px;
+    }
+
+    .db-phase {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .db-body {
+      min-height: auto;
+    }
+
+    .db-chrome {
+      padding: 8px 12px;
+      gap: 10px;
+    }
+
+    .db-tab {
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+
+    .db-terminal {
+      font-size: 11px;
+      padding: 6px 12px;
+    }
+
+    .db-output {
+      margin-bottom: 1rem;
+    }
+
+    .db-output-body {
+      padding: 1rem;
+    }
+
+    .db-output-prefix {
+      font-size: 1rem;
+    }
+
+    .db-type-title {
+      font-size: 1rem;
+    }
+
+    .db-type-desc {
+      font-size: 0.875rem;
+    }
+
+    .db-type-cursor {
+      font-size: 0.875rem;
+    }
+
+    .db-output-line--desc {
+      padding-inline-start: 24px;
+    }
+  }
+
+  /* ── Reduced Motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .db-phase-active .db-chart-line {
+      stroke-dashoffset: 0;
+      stroke-dasharray: none;
+    }
+
+    .db-cursor,
+    .db-type-cursor {
+      animation: none;
+    }
+
+    .db-phase-active .db-node {
+      animation: none;
+    }
+
+    .db-phase-active .db-panel {
+      animation: none;
+      background: rgba(10, 14, 24, 0.45);
+      -webkit-backdrop-filter: blur(12px) saturate(1.2);
+      backdrop-filter: blur(12px) saturate(1.2);
+    }
+
+    .db-frame {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  function initDashboard() {
+    const dashboard = document.querySelector('.process-dashboard');
+    if (!dashboard) return;
+
+    const tabs = dashboard.querySelectorAll<HTMLButtonElement>('.db-tab');
+    const phases = dashboard.querySelectorAll<HTMLElement>('.db-phase');
+    const progressBar = dashboard.querySelector<HTMLElement>('.db-progress-bar');
+    const commandEl = dashboard.querySelector<HTMLElement>('.db-command');
+    const dbWin = dashboard.querySelector<HTMLElement>('.db-window');
+    const tablist = dashboard.querySelector<HTMLElement>('.db-tabs');
+    const typeTitle = dashboard.querySelector<HTMLElement>('.db-type-title');
+    const typeDesc = dashboard.querySelector<HTMLElement>('.db-type-desc');
+
+    const commands = [
+      'nlx analyze --workflow client_ops',
+      'nlx build --model custom-v2 --test',
+      'nlx deploy --env production --monitor',
+      'nlx status --health --optimize',
+    ];
+
+    // Extract step text from sr-only data source divs
+    const stepData = Array.from(dashboard.querySelectorAll<HTMLElement>('.db-desc')).map(d => ({
+      title: d.querySelector('h3')?.textContent || '',
+      desc: d.querySelector('p')?.textContent || '',
+    }));
+
+    let current = 0;
+    let cycleTimer: ReturnType<typeof setInterval> | null = null;
+    let resumeTimer: ReturnType<typeof setTimeout> | null = null;
+    let typeTimer: ReturnType<typeof setTimeout> | null = null;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ── Typewriter ──
+    function cancelTyping() {
+      if (typeTimer) { clearTimeout(typeTimer); typeTimer = null; }
+    }
+
+    function typeText(el: HTMLElement, text: string, speed: number, onDone?: () => void) {
+      let i = 0;
+      el.textContent = '';
+      function tick() {
+        if (i < text.length) {
+          el.textContent += text[i];
+          i++;
+          typeTimer = setTimeout(tick, speed);
+        } else if (onDone) {
+          onDone();
+        }
+      }
+      tick();
+    }
+
+    function typePhaseText(phase: number) {
+      cancelTyping();
+      if (!typeTitle || !typeDesc) return;
+      const data = stepData[phase];
+      if (!data) return;
+
+      if (prefersReduced) {
+        typeTitle.textContent = data.title;
+        typeDesc.textContent = data.desc;
+        return;
+      }
+
+      typeTitle.textContent = '';
+      typeDesc.textContent = '';
+
+      // Calculate speed: finish in ~3.5s (leaves 1.5s buffer before 5s cycle)
+      const totalChars = data.title.length + data.desc.length;
+      const speed = Math.max(15, Math.min(25, 3500 / totalChars));
+
+      typeText(typeTitle, data.title, speed, () => {
+        typeTimer = setTimeout(() => {
+          typeText(typeDesc, data.desc, speed);
+        }, 150);
+      });
+    }
+
+    // ── Phase switching ──
+    function setPhase(i: number) {
+      current = i;
+      tabs.forEach((tab, idx) => tab.setAttribute('aria-selected', idx === i ? 'true' : 'false'));
+      phases.forEach((phase, idx) => phase.classList.toggle('db-phase-active', idx === i));
+      if (progressBar) progressBar.style.width = `${(i + 1) * 25}%`;
+      if (commandEl) commandEl.textContent = commands[i];
+      typePhaseText(i);
+    }
+
+    function startCycle() {
+      stopCycle();
+      cycleTimer = setInterval(() => setPhase((current + 1) % 4), 5000);
+    }
+
+    function stopCycle() {
+      if (cycleTimer) { clearInterval(cycleTimer); cycleTimer = null; }
+      if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
+    }
+
+    function pauseAndResume() {
+      stopCycle();
+      if (!prefersReduced) {
+        resumeTimer = setTimeout(startCycle, 8000);
+      }
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => { setPhase(i); pauseAndResume(); });
+    });
+
+    if (dbWin) {
+      dbWin.addEventListener('mouseenter', stopCycle);
+      dbWin.addEventListener('mouseleave', () => {
+        if (!prefersReduced) resumeTimer = setTimeout(startCycle, 8000);
+      });
+    }
+
+    if (tablist) {
+      tablist.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const dir = e.key === 'ArrowRight' ? 1 : -1;
+          const next = (current + dir + 4) % 4;
+          setPhase(next);
+          tabs[next]?.focus();
+          pauseAndResume();
+        }
+      });
+    }
+
+    // ── Lock heights to prevent layout shift on phase change ──
+    function lockHeights() {
+      // Lock terminal description box to fixed height
+      const output = dashboard.querySelector<HTMLElement>('.db-output');
+      if (output && typeTitle && typeDesc) {
+        output.style.height = '';
+        let maxH = 0;
+        for (const data of stepData) {
+          typeTitle.textContent = data.title;
+          typeDesc.textContent = data.desc;
+          maxH = Math.max(maxH, output.offsetHeight);
+        }
+        output.style.height = maxH + 'px';
+        typeTitle.textContent = '';
+        typeDesc.textContent = '';
+      }
+
+      // Lock dashboard body
+      const body = dashboard.querySelector<HTMLElement>('.db-body');
+      if (body && phases.length > 0) {
+        body.style.minHeight = '';
+        let maxH = 0;
+        phases.forEach(phase => {
+          // Show one phase at a time, suppress fadeIn animation
+          phases.forEach(p => p.classList.remove('db-phase-active'));
+          phase.classList.add('db-phase-active');
+          phase.style.animation = 'none';
+          maxH = Math.max(maxH, body.offsetHeight);
+          phase.style.animation = '';
+        });
+        // Restore phase 0 as active
+        phases.forEach((p, i) => p.classList.toggle('db-phase-active', i === current));
+        body.style.minHeight = maxH + 'px';
+      }
+    }
+
+    // Measure on init, re-measure after fonts load and on resize
+    lockHeights();
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(lockHeights);
+    }
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        cancelTyping();
+        lockHeights();
+        typePhaseText(current);
+      }, 250);
+    });
+
+    // Type initial phase and start cycling
+    typePhaseText(0);
+    if (!prefersReduced) startCycle();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDashboard);
+  } else {
+    initDashboard();
+  }
+</script>

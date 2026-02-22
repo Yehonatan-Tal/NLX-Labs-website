@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  align?: "center" | "start";
+  dark?: boolean;
+  accent?: boolean;
+}
+
+const { title, subtitle, align = "center", dark = false, accent = false } = Astro.props;
+const alignClass = align === "center" ? "text-center" : "text-start";
+const titleColor = dark ? "text-dark-text" : "text-text-primary";
+const subtitleColor = dark ? "text-dark-text-secondary" : "text-text-secondary";
+---
+
+<div class={`mb-14 lg:mb-20 ${alignClass}`} data-animate="fade-up">
+  {accent && (
+    <div class={`mb-6 flex items-center gap-0 ${align === "center" ? "justify-center" : ""}`} aria-hidden="true">
+      <div class="section-divider-line"></div>
+      <span class="section-divider-label">NLX labs</span>
+      <div class="section-divider-line"></div>
+    </div>
+  )}
+  <h2
+    class={`text-[1.875rem] md:text-[2.25rem] lg:text-[2.75rem] font-bold leading-[1.15] tracking-[-0.025em] ${titleColor}`}
+    style="text-wrap: balance;"
+  >
+    {title}
+  </h2>
+  {subtitle && (
+    <p class={`mt-5 text-[1rem] lg:text-[1.125rem] leading-[1.65] ${subtitleColor} max-w-[36rem] ${align === "center" ? "mx-auto" : ""}`}>
+      {subtitle}
+    </p>
+  )}
+</div>
+
+<style>
+  .section-divider-line {
+    flex: 1;
+    max-width: 180px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    box-shadow: 0 0 6px rgba(224, 104, 90, 0.3);
+  }
+
+  .section-divider-label {
+    flex-shrink: 0;
+    padding: 0 16px;
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    text-shadow:
+      0 0 4px rgba(224, 104, 90, 0.9),
+      0 0 12px rgba(224, 104, 90, 0.7),
+      0 0 24px rgba(224, 104, 90, 0.4),
+      0 0 48px rgba(224, 104, 90, 0.2);
+  }
+</style>

@@ -1,0 +1,314 @@
+---
+interface Props {
+  index: number;
+  title: string;
+  description: string;
+  delay?: number;
+}
+
+const { index, title, description, delay = 0 } = Astro.props;
+---
+
+<div
+  class="group glass-card rounded-[0.75rem] overflow-hidden"
+  style={`transition-delay: ${delay}ms;`}
+>
+  <!-- Illustration area -->
+  <div class="abt-illust" aria-hidden="true">
+    {index === 0 && (
+      <!-- Data Flow Heatmap: client knowledge -->
+      <svg viewBox="0 0 280 120" fill="none" class="abt-svg">
+        <g class="abt-illust-group">
+          <!-- Axis lines -->
+          <line x1="38" y1="14" x2="38" y2="106" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <line x1="38" y1="106" x2="252" y2="106" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <!-- Grid of rounded squares (8 cols × 5 rows) -->
+          {/* Row 0 */}
+          <rect x="48" y="16" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="72" y="16" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="96" y="16" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.2)" class="abt-accent"/>
+          <rect x="120" y="16" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="144" y="16" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="168" y="16" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.15)" class="abt-accent"/>
+          <rect x="192" y="16" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="216" y="16" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          {/* Row 1 */}
+          <rect x="48" y="38" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="72" y="38" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.4)" class="abt-accent"/>
+          <rect x="96" y="38" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.7)" class="abt-accent"/>
+          <rect x="120" y="38" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.2)" class="abt-accent"/>
+          <rect x="144" y="38" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="168" y="38" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.4)" class="abt-accent"/>
+          <rect x="192" y="38" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.2)" class="abt-accent"/>
+          <rect x="216" y="38" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          {/* Row 2 */}
+          <rect x="48" y="60" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.15)" class="abt-accent"/>
+          <rect x="72" y="60" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.2)" class="abt-accent"/>
+          <rect x="96" y="60" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.55)" class="abt-accent"/>
+          <rect x="120" y="60" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="144" y="60" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.2)" class="abt-accent"/>
+          <rect x="168" y="60" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.7)" class="abt-accent"/>
+          <rect x="192" y="60" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.4)" class="abt-accent"/>
+          <rect x="216" y="60" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          {/* Row 3 */}
+          <rect x="48" y="82" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="72" y="82" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="96" y="82" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.3)" class="abt-accent"/>
+          <rect x="120" y="82" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="144" y="82" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="168" y="82" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.2)" class="abt-accent"/>
+          <rect x="192" y="82" width="14" height="14" rx="2.5" fill="rgba(255,255,255,0.04)"/>
+          <rect x="216" y="82" width="14" height="14" rx="2.5" fill="rgba(224,104,90,0.15)" class="abt-accent"/>
+          <!-- Highlighted column overlay -->
+          <rect x="94" y="12" width="18" height="92" rx="3" fill="rgba(224,104,90,0.06)" stroke="rgba(224,104,90,0.15)" stroke-width="0.5" class="abt-accent"/>
+        </g>
+      </svg>
+    )}
+
+    {index === 1 && (
+      <!-- Dual Diagnostic Panels: honest assessment -->
+      <svg viewBox="0 0 280 120" fill="none" class="abt-svg">
+        <g class="abt-illust-group">
+          <!-- Left panel -->
+          <rect x="30" y="16" width="95" height="88" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <!-- Left panel header -->
+          <rect x="38" y="24" width="50" height="6" rx="2" fill="rgba(255,255,255,0.08)"/>
+          <!-- Left panel rows -->
+          <rect x="38" y="40" width="72" height="5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="38" y="52" width="60" height="5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="38" y="64" width="68" height="5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="38" y="76" width="55" height="5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+          <!-- Check badge on left panel -->
+          <circle cx="110" cy="24" r="7" fill="rgba(224,104,90,0.2)" class="abt-accent"/>
+          <polyline points="106,24 109,27 114,21" stroke="#E0685A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="abt-accent"/>
+
+          <!-- Right panel -->
+          <rect x="155" y="16" width="95" height="88" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <!-- Right panel header -->
+          <rect x="163" y="24" width="50" height="6" rx="2" fill="rgba(255,255,255,0.08)"/>
+          <!-- Right panel rows -->
+          <rect x="163" y="40" width="65" height="5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="163" y="52" width="72" height="5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="163" y="64" width="58" height="5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="163" y="76" width="70" height="5" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+          <!-- X badge on right panel -->
+          <circle cx="235" cy="24" r="7" fill="rgba(255,255,255,0.06)"/>
+          <line x1="232" y1="21" x2="238" y2="27" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="238" y1="21" x2="232" y2="27" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+
+          <!-- Bidirectional arrow connecting panels -->
+          <line x1="130" y1="60" x2="150" y2="60" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <polyline points="133,57 130,60 133,63" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="147,57 150,60 147,63" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </svg>
+    )}
+
+    {index === 2 && (
+      <!-- Analytics Dashboard: measurable outcomes -->
+      <svg viewBox="0 0 280 120" fill="none" class="abt-svg">
+        <g class="abt-illust-group">
+          <!-- Background grid -->
+          <line x1="50" y1="20" x2="50" y2="100" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="90" y1="20" x2="90" y2="100" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="130" y1="20" x2="130" y2="100" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="170" y1="20" x2="170" y2="100" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="210" y1="20" x2="210" y2="100" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="50" y1="100" x2="240" y2="100" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <line x1="50" y1="80" x2="240" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="50" y1="60" x2="240" y2="60" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="50" y1="40" x2="240" y2="40" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <!-- Y-axis ticks -->
+          <line x1="46" y1="80" x2="50" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <line x1="46" y1="60" x2="50" y2="60" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <line x1="46" y1="40" x2="50" y2="40" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <!-- Bars with ascending coral gradient -->
+          <rect x="62" y="82" width="22" height="18" rx="2" fill="rgba(224,104,90,0.15)" class="abt-accent"/>
+          <rect x="100" y="70" width="22" height="30" rx="2" fill="rgba(224,104,90,0.25)" class="abt-accent"/>
+          <rect x="138" y="55" width="22" height="45" rx="2" fill="rgba(224,104,90,0.35)" class="abt-accent"/>
+          <rect x="176" y="42" width="22" height="58" rx="2" fill="rgba(224,104,90,0.48)" class="abt-accent"/>
+          <rect x="214" y="28" width="22" height="72" rx="2" fill="rgba(224,104,90,0.6)" class="abt-accent"/>
+          <!-- Trend line -->
+          <polyline points="73,82 111,70 149,55 187,42 225,28" stroke="#E0685A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="abt-accent"/>
+          <!-- Data dots at peaks -->
+          <circle cx="73" cy="82" r="2.5" fill="#1C2230" stroke="#E0685A" stroke-width="1.2" class="abt-accent"/>
+          <circle cx="111" cy="70" r="2.5" fill="#1C2230" stroke="#E0685A" stroke-width="1.2" class="abt-accent"/>
+          <circle cx="149" cy="55" r="2.5" fill="#1C2230" stroke="#E0685A" stroke-width="1.2" class="abt-accent"/>
+          <circle cx="187" cy="42" r="2.5" fill="#1C2230" stroke="#E0685A" stroke-width="1.2" class="abt-accent"/>
+          <circle cx="225" cy="28" r="3" fill="#1C2230" stroke="#E0685A" stroke-width="1.5" class="abt-accent"/>
+          <!-- Target dashed line -->
+          <line x1="50" y1="48" x2="240" y2="48" stroke="rgba(96,165,250,0.3)" stroke-width="1" stroke-dasharray="5 3"/>
+          <!-- Target label box -->
+          <rect x="240" y="43" width="28" height="10" rx="2" fill="rgba(96,165,250,0.12)" stroke="rgba(96,165,250,0.25)" stroke-width="0.5"/>
+          <line x1="247" y1="46" x2="261" y2="46" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+          <line x1="247" y1="49" x2="255" y2="49" stroke="rgba(96,165,250,0.3)" stroke-width="0.8"/>
+        </g>
+      </svg>
+    )}
+
+    {index === 3 && (
+      <!-- Layered Windows Stack: build for independence -->
+      <svg viewBox="0 0 280 120" fill="none" class="abt-svg">
+        <g class="abt-illust-group">
+          <!-- Back cards (most receded) -->
+          <rect x="105" y="10" width="80" height="52" rx="5" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+          <rect x="98" y="16" width="80" height="52" rx="5" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
+          <rect x="91" y="22" width="80" height="52" rx="5" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <!-- Middle card -->
+          <rect x="84" y="28" width="80" height="52" rx="5" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <!-- Middle card inner lines -->
+          <rect x="92" y="36" width="35" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
+          <rect x="92" y="44" width="55" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+          <rect x="92" y="51" width="45" height="3" rx="1" fill="rgba(255,255,255,0.04)"/>
+          <!-- Second front card -->
+          <rect x="100" y="42" width="80" height="52" rx="5" fill="rgba(28,34,48,0.8)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <!-- Second front card inner lines -->
+          <rect x="108" y="50" width="40" height="4" rx="1" fill="rgba(255,255,255,0.07)"/>
+          <rect x="108" y="58" width="58" height="3" rx="1" fill="rgba(255,255,255,0.05)"/>
+          <rect x="108" y="65" width="48" height="3" rx="1" fill="rgba(255,255,255,0.05)"/>
+          <!-- Front card (most prominent) -->
+          <rect x="116" y="56" width="80" height="52" rx="5" fill="rgba(28,34,48,0.9)" stroke="rgba(224,104,90,0.35)" stroke-width="1.2" class="abt-accent"/>
+          <!-- Front card header bar -->
+          <rect x="124" y="63" width="64" height="5" rx="1.5" fill="rgba(224,104,90,0.12)" class="abt-accent"/>
+          <!-- Front card content lines -->
+          <rect x="124" y="74" width="56" height="3" rx="1" fill="rgba(255,255,255,0.08)"/>
+          <rect x="124" y="81" width="48" height="3" rx="1" fill="rgba(255,255,255,0.06)"/>
+          <rect x="124" y="88" width="40" height="3" rx="1" fill="rgba(255,255,255,0.05)"/>
+          <!-- Small accent dot on front card -->
+          <circle cx="184" cy="65.5" r="2" fill="rgba(224,104,90,0.4)" class="abt-accent"/>
+        </g>
+      </svg>
+    )}
+
+    {index === 4 && (
+      <!-- Concentric Security Rings: responsible AI -->
+      <svg viewBox="0 0 280 120" fill="none" class="abt-svg">
+        <g class="abt-illust-group">
+          <!-- Faint radial lines -->
+          <line x1="140" y1="60" x2="140" y2="10" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="140" y1="60" x2="140" y2="110" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="140" y1="60" x2="90" y2="60" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="140" y1="60" x2="190" y2="60" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+          <line x1="140" y1="60" x2="105" y2="25" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+          <line x1="140" y1="60" x2="175" y2="25" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+          <line x1="140" y1="60" x2="105" y2="95" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+          <line x1="140" y1="60" x2="175" y2="95" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+          <!-- Outer ring (dashed) -->
+          <circle cx="140" cy="60" r="48" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+          <!-- Middle ring (coral) -->
+          <circle cx="140" cy="60" r="34" stroke="rgba(224,104,90,0.35)" stroke-width="1.2" fill="none" class="abt-accent"/>
+          <!-- Inner ring (filled) -->
+          <circle cx="140" cy="60" r="20" stroke="rgba(224,104,90,0.5)" stroke-width="1.5" fill="rgba(224,104,90,0.08)" class="abt-accent"/>
+          <!-- Dots on outer ring at cardinal points -->
+          <circle cx="140" cy="12" r="2.5" fill="rgba(255,255,255,0.15)"/>
+          <circle cx="140" cy="108" r="2.5" fill="rgba(255,255,255,0.15)"/>
+          <circle cx="92" cy="60" r="2.5" fill="rgba(255,255,255,0.15)"/>
+          <circle cx="188" cy="60" r="2.5" fill="rgba(255,255,255,0.15)"/>
+          <!-- Dots on middle ring at diagonals -->
+          <circle cx="116" cy="36" r="2" fill="rgba(224,104,90,0.3)" class="abt-accent"/>
+          <circle cx="164" cy="36" r="2" fill="rgba(224,104,90,0.3)" class="abt-accent"/>
+          <circle cx="116" cy="84" r="2" fill="rgba(224,104,90,0.3)" class="abt-accent"/>
+          <circle cx="164" cy="84" r="2" fill="rgba(224,104,90,0.3)" class="abt-accent"/>
+          <!-- Center lock icon -->
+          <rect x="133" y="58" width="14" height="11" rx="2" fill="rgba(224,104,90,0.15)" stroke="rgba(224,104,90,0.5)" stroke-width="1.2" class="abt-accent"/>
+          <path d="M136 58 L136 54 Q136 49 140 49 Q144 49 144 54 L144 58" stroke="rgba(224,104,90,0.5)" stroke-width="1.2" fill="none" stroke-linecap="round" class="abt-accent"/>
+          <circle cx="140" cy="63" r="1.2" fill="rgba(224,104,90,0.6)" class="abt-accent"/>
+        </g>
+      </svg>
+    )}
+
+    {index === 5 && (
+      <!-- Area Performance Chart: growth through excellence -->
+      <svg viewBox="0 0 280 120" fill="none" class="abt-svg">
+        <g class="abt-illust-group">
+          <!-- Background grid -->
+          <line x1="40" y1="20" x2="40" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+          <line x1="40" y1="100" x2="250" y2="100" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <line x1="40" y1="80" x2="250" y2="80" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+          <line x1="40" y1="60" x2="250" y2="60" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+          <line x1="40" y1="40" x2="250" y2="40" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+          <!-- Y-axis ticks -->
+          <line x1="36" y1="80" x2="40" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <line x1="36" y1="60" x2="40" y2="60" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <line x1="36" y1="40" x2="40" y2="40" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <!-- Area fill (gradient effect via multiple layers) -->
+          <path d="M50 95 Q90 90 120 72 Q155 52 185 38 Q210 28 235 20 L235 100 L50 100 Z" fill="rgba(224,104,90,0.06)"/>
+          <path d="M50 95 Q90 90 120 72 Q155 52 185 38 Q210 28 235 20 L235 100 L50 100 Z" fill="url(#areaGrad5)" class="abt-accent"/>
+          <defs>
+            <linearGradient id="areaGrad5" x1="140" y1="100" x2="140" y2="20" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="rgba(224,104,90,0.02)"/>
+              <stop offset="100%" stop-color="rgba(224,104,90,0.18)"/>
+            </linearGradient>
+          </defs>
+          <!-- Curve line -->
+          <path d="M50 95 Q90 90 120 72 Q155 52 185 38 Q210 28 235 20" stroke="#E0685A" stroke-width="1.8" fill="none" stroke-linecap="round" class="abt-accent"/>
+          <!-- Milestone dots -->
+          <circle cx="80" cy="88" r="3" fill="#1C2230" stroke="rgba(224,104,90,0.5)" stroke-width="1.2" class="abt-accent"/>
+          <circle cx="120" cy="72" r="3" fill="#1C2230" stroke="rgba(224,104,90,0.5)" stroke-width="1.2" class="abt-accent"/>
+          <circle cx="170" cy="44" r="3" fill="#1C2230" stroke="#E0685A" stroke-width="1.2" class="abt-accent"/>
+          <circle cx="235" cy="20" r="3.5" fill="#1C2230" stroke="#E0685A" stroke-width="1.5" class="abt-accent"/>
+          <!-- Upward arrow at peak -->
+          <line x1="235" y1="20" x2="235" y2="10" stroke="#E0685A" stroke-width="1.2" stroke-linecap="round" class="abt-accent"/>
+          <polyline points="231,14 235,10 239,14" stroke="#E0685A" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="abt-accent"/>
+        </g>
+      </svg>
+    )}
+  </div>
+
+  <!-- Text content -->
+  <div class="p-6 lg:p-8">
+    <h3 class="text-[1.1875rem] lg:text-[1.25rem] font-semibold leading-[1.25] tracking-[-0.01em] text-dark-text">
+      {title}
+    </h3>
+    <p class="mt-3 text-[0.9375rem] leading-[1.7] text-dark-text-secondary">
+      {description}
+    </p>
+  </div>
+</div>
+
+<style>
+  .abt-illust {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 14, 24, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .abt-svg {
+    width: 80%;
+    max-width: 240px;
+    height: auto;
+    stroke-linecap: round;
+  }
+
+  .abt-illust-group {
+    transition: transform 0.35s ease;
+  }
+
+  .group:hover .abt-illust-group {
+    transform: translateY(-2px);
+  }
+
+  .abt-accent {
+    opacity: 0.7;
+    transition: opacity 0.35s ease;
+  }
+
+  .group:hover .abt-accent {
+    opacity: 0.95;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .abt-accent {
+      transition: none;
+    }
+    .abt-illust-group {
+      transition: none;
+    }
+    .group:hover .abt-illust-group {
+      transform: none;
+    }
+  }
+</style>

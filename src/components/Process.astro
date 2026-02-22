@@ -1,0 +1,109 @@
+---
+import type { Translations } from "@i18n/types";
+import SectionHeading from "./SectionHeading.astro";
+import ProcessDashboard from "./ProcessDashboard.astro";
+
+interface Props {
+  t: Translations["process"];
+}
+
+const { t } = Astro.props;
+---
+
+<section id="process" class="process-section relative pt-16 pb-24 lg:pt-24 lg:pb-36 px-6 lg:px-12 overflow-hidden noise-texture" style="background:#07080a">
+  <!-- Ambient glow orbs -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <div
+      class="glow-orb animate-float-slower"
+      style="width: 500px; height: 350px; top: 10%; left: 10%; background: radial-gradient(ellipse, rgba(224, 104, 90, 0.08) 0%, transparent 70%);"
+    ></div>
+    <div
+      class="glow-orb animate-float-slow"
+      style="width: 400px; height: 300px; bottom: 10%; right: 10%; background: radial-gradient(ellipse, rgba(150, 160, 180, 0.05) 0%, transparent 70%);"
+    ></div>
+  </div>
+
+  <!-- Twinkling stars -->
+  <div class="star-field" aria-hidden="true">
+    <span class="twinkle-star" style="top:9%;left:22%;animation-duration:4.8s;animation-delay:0.5s"></span>
+    <span class="twinkle-star" style="top:38%;left:81%;animation-duration:5.3s;animation-delay:2.4s"></span>
+    <span class="twinkle-star" style="top:65%;left:12%;animation-duration:4.1s;animation-delay:3.7s"></span>
+    <span class="twinkle-star" style="top:84%;left:58%;animation-duration:5.7s;animation-delay:1.2s"></span>
+  </div>
+
+  <!-- Top gradient divider -->
+  <div class="absolute top-0 left-0 right-0 section-divider" aria-hidden="true"></div>
+
+  <div class="relative z-1 mx-auto max-w-[72rem]">
+    <SectionHeading title={t.title} subtitle={t.subtitle} dark accent />
+
+    <div data-animate="fade-up">
+      <ProcessDashboard steps={t.steps} />
+    </div>
+  </div>
+
+</section>
+
+<style>
+  /* ── Sparse starfield — scattered white dots on very dark blue ── */
+  .process-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(1px 1px at 17% 42%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 62% 18%, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1px 1px at 83% 71%, rgba(255,255,255,0.45), transparent),
+      radial-gradient(1px 1px at 38% 86%, rgba(255,255,255,0.30), transparent),
+      radial-gradient(1px 1px at 71% 53%, rgba(255,255,255,0.40), transparent),
+      radial-gradient(1px 1px at 24% 12%, rgba(255,255,255,0.45), transparent),
+      radial-gradient(1px 1px at 91% 29%, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1.5px 1.5px at 48% 35%, rgba(255,255,255,0.50), transparent),
+      radial-gradient(1.5px 1.5px at 79% 67%, rgba(255,255,255,0.40), transparent);
+    background-size:
+      277px 311px,
+      331px 263px,
+      263px 293px,
+      293px 277px,
+      311px 331px,
+      349px 251px,
+      251px 349px,
+      397px 367px,
+      367px 397px;
+  }
+
+  .star-field {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .twinkle-star {
+    position: absolute;
+    display: block;
+    width: 1.5px;
+    height: 1.5px;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.25;
+    animation: twinkle ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; box-shadow: none; }
+    50% { opacity: 0.85; box-shadow: 0 0 3px rgba(255,255,255,0.4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .twinkle-star { animation: none; opacity: 0.4; }
+  }
+
+  /* Softer starlight-tinted title instead of near-white */
+  .process-section :global(h2) {
+    color: #B0C0D4;
+  }
+
+</style>

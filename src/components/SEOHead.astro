@@ -1,0 +1,39 @@
+---
+import type { Locale, Translations } from "@i18n/types";
+import { getAlternateUrl, LOCALES, DEFAULT_LOCALE } from "@i18n/i18n";
+
+interface Props {
+  meta: Translations["meta"];
+  locale: Locale;
+  currentUrl: URL;
+}
+
+const { meta, locale, currentUrl } = Astro.props;
+const canonicalUrl = currentUrl.toString();
+---
+
+<title>{meta.title}</title>
+<meta name="description" content={meta.description} />
+<meta property="og:title" content={meta.ogTitle} />
+<meta property="og:description" content={meta.ogDescription} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={new URL("/NLX-Labs-website/og-image.png", Astro.site).toString()} />
+<meta property="og:locale" content={locale === "he" ? "he_IL" : "en_US"} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={meta.ogTitle} />
+<meta name="twitter:description" content={meta.ogDescription} />
+<meta name="twitter:image" content={new URL("/NLX-Labs-website/og-image.png", Astro.site).toString()} />
+<link rel="canonical" href={canonicalUrl} />
+{LOCALES.map((l) => (
+  <link
+    rel="alternate"
+    hreflang={l}
+    href={getAlternateUrl(currentUrl, l)}
+  />
+))}
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href={getAlternateUrl(currentUrl, DEFAULT_LOCALE)}
+/>

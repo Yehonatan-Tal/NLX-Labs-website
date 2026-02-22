@@ -1,0 +1,149 @@
+---
+import type { Locale, Translations } from "@i18n/types";
+import LanguageToggle from "./LanguageToggle.astro";
+import { X } from "@lucide/astro";
+
+interface Props {
+  t: Translations["nav"];
+  locale: Locale;
+}
+
+const { t, locale } = Astro.props;
+
+const navLinks = [
+  { href: "#services", label: t.services },
+  { href: "#process", label: t.process },
+  { href: "#industries", label: t.industries },
+  { href: "#about", label: t.about },
+  { href: "#contact", label: t.contact },
+];
+---
+
+<div
+  id="mobile-menu-overlay"
+  class="fixed inset-0 z-50 hidden bg-black/50 opacity-0 transition-opacity duration-200"
+  aria-hidden="true"
+></div>
+
+<div
+  id="mobile-menu"
+  class="fixed top-0 end-0 z-50 flex h-full w-[85vw] max-w-[320px] translate-x-full flex-col bg-dark transition-transform duration-300"
+  style="transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation menu"
+  hidden
+>
+  <div class="flex items-center justify-end p-4">
+    <button
+      id="menu-close"
+      class="flex items-center justify-center w-11 h-11 text-white"
+      aria-label={t.menuClose}
+    >
+      <X size={24} />
+    </button>
+  </div>
+
+  <nav class="flex flex-col px-6 flex-1" aria-label="Mobile navigation">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="mobile-nav-link flex items-center h-14 text-[1.25rem] text-white transition-opacity duration-150 hover:opacity-75"
+      >
+        {link.label}
+      </a>
+    ))}
+  </nav>
+
+  <div class="p-6 border-t border-white/10">
+    <LanguageToggle locale={locale} label={t.languageToggle} />
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const menuClose = document.getElementById("menu-close");
+  const menu = document.getElementById("mobile-menu");
+  const overlay = document.getElementById("mobile-menu-overlay");
+
+  if (menuToggle && menuClose && menu && overlay) {
+    const dir = document.documentElement.dir;
+    const translateOpen = "translate-x-0";
+    const translateClosed = dir === "rtl" ? "-translate-x-full" : "translate-x-full";
+
+    // Update closed class for RTL
+    if (dir === "rtl") {
+      menu.classList.remove("translate-x-full");
+      menu.classList.add("-translate-x-full");
+    }
+
+    let focusableElements: HTMLElement[] = [];
+    let firstFocusable: HTMLElement | null = null;
+    let lastFocusable: HTMLElement | null = null;
+
+    function openMenu() {
+      menu!.hidden = false;
+      overlay!.classList.remove("hidden");
+      requestAnimationFrame(() => {
+        menu!.classList.remove(translateClosed);
+        menu!.classList.add(translateOpen);
+        overlay!.classList.remove("opacity-0");
+        overlay!.classList.add("opacity-100");
+      });
+      menuToggle!.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+
+      focusableElements = Array.from(
+        menu!.querySelectorAll<HTMLElement>(
+          'a[href], button, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      firstFocusable = focusableElements[0];
+      lastFocusable = focusableElements[focusableElements.length - 1];
+      menuClose!.focus();
+    }
+
+    function closeMenu() {
+      menu!.classList.remove(translateOpen);
+      menu!.classList.add(translateClosed);
+      overlay!.classList.remove("opacity-100");
+      overlay!.classList.add("opacity-0");
+      menuToggle!.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+
+      setTimeout(() => {
+        menu!.hidden = true;
+        overlay!.classList.add("hidden");
+      }, 300);
+      menuToggle!.focus();
+    }
+
+    menuToggle.addEventListener("click", openMenu);
+    menuClose.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !menu.hidden) {
+        closeMenu();
+      }
+      if (e.key === "Tab" && !menu.hidden) {
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            e.preventDefault();
+            lastFocusable?.focus();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            e.preventDefault();
+            firstFocusable?.focus();
+          }
+        }
+      }
+    });
+
+    // Close on nav link click
+    menu.querySelectorAll(".mobile-nav-link").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+</script>

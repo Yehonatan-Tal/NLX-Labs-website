@@ -1,0 +1,207 @@
+---
+import type { Translations } from "@i18n/types";
+
+interface Props {
+  t: Translations["hero"];
+}
+
+const { t } = Astro.props;
+
+const raw = import.meta.env.BASE_URL;
+const base = raw.endsWith("/") ? raw : `${raw}/`;
+const heroBgUrl = `${base}images/heroCover2.avif`;
+---
+
+<section
+  id="hero"
+  class="hero-section relative flex min-h-[100svh] items-center justify-center overflow-hidden noise-texture"
+  style={`--hero-bg: url('${heroBgUrl}')`}
+>
+  <!-- Parallax: deep ambient glow (slowest layer) -->
+  <div id="hero-parallax-glow" class="hero-parallax-layer" aria-hidden="true">
+    <div class="hero-glow-inner"></div>
+  </div>
+
+  <!-- Parallax: background image + frost (medium layer with 3D tilt) -->
+  <div id="hero-parallax-bg" class="hero-parallax-layer hero-parallax-bg" aria-hidden="true">
+    <div class="hero-bg"></div>
+    <div class="hero-frost"></div>
+  </div>
+
+  <!-- Ambient glow orbs -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <div
+      class="glow-orb animate-float-slow"
+      style="width: 800px; height: 800px; top: -30%; left: 60%; margin-left: -300px; background: radial-gradient(ellipse, rgba(224, 104, 90, 0.10) 0%, transparent 70%);"
+    ></div>
+  </div>
+
+  <div class="hero-content relative z-1 px-6 lg:px-12 pt-32 pb-24 lg:pt-0 lg:pb-0">
+    <!-- Accent tag -->
+    <div class="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-5 py-2.5 backdrop-blur-sm">
+      <span class="relative flex h-2 w-2">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
+      </span>
+      <span class="text-[0.8125rem] font-medium text-dark-text-secondary tracking-wide">AI Solutions Studio</span>
+    </div>
+
+    <h1
+      data-hero-headline
+      class="text-[2.5rem] sm:text-[3rem] lg:text-[4rem] xl:text-[4.5rem] font-bold leading-[1.06] tracking-[-0.035em] text-dark-text lg:text-start"
+      style="text-wrap: balance;"
+    >
+      {t.headline}
+    </h1>
+
+    <p data-hero-subheadline class="mx-auto lg:mx-0 mt-7 max-w-[38rem] text-[1.0625rem] lg:text-[1.1875rem] leading-[1.7] text-dark-text-secondary">
+      {t.subheadline}
+    </p>
+
+    <div data-hero-ctas class="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+      <a
+        href="#contact"
+        class="group relative inline-flex items-center justify-center min-h-[52px] px-8 rounded-[0.625rem] bg-accent font-medium text-[0.9375rem] text-white transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_0_40px_rgba(224,104,90,0.35),0_0_80px_rgba(224,104,90,0.15)]"
+      >
+        {t.ctaPrimary}
+        <svg class="ms-2 h-4 w-4 animate-nudge-x rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </a>
+      <a
+        href="#services"
+        class="inline-flex items-center justify-center min-h-[52px] px-8 rounded-[0.625rem] border border-white/[0.12] bg-white/[0.04] font-medium text-[0.9375rem] text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/[0.08] hover:border-white/20"
+      >
+        {t.ctaSecondary}
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom gradient fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent" aria-hidden="true"></div>
+</section>
+
+<style>
+  /* ── Base (mobile) ── */
+
+  .hero-section {
+    background: #000;
+  }
+
+  .hero-parallax-layer {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .hero-parallax-bg {
+    inset: -20px;
+    transform-style: preserve-3d;
+  }
+
+  .hero-glow-inner {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 50% at 50% 35%, rgba(224, 104, 90, 0.08) 0%, transparent 70%);
+    filter: blur(60px);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: var(--hero-bg);
+    background-size: contain;
+    background-position: center -150px;
+    background-repeat: no-repeat;
+    opacity: 1;
+    mask-image: radial-gradient(ellipse 45% 70% at 50% 30%, black 20%, rgba(0,0,0,0.5) 50%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 45% 70% at 50% 30%, black 20%, rgba(0,0,0,0.5) 50%, transparent 80%);
+  }
+
+  .hero-frost {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(32px) saturate(1.2);
+    -webkit-backdrop-filter: blur(32px) saturate(1.2);
+    background: rgba(0, 0, 0, 0.3);
+    mask-image: radial-gradient(ellipse 35% 55% at 50% 30%, transparent 45%, rgba(0,0,0,0.5) 62%, black 88%);
+    -webkit-mask-image: radial-gradient(ellipse 35% 55% at 50% 30%, transparent 45%, rgba(0,0,0,0.5) 62%, black 88%);
+  }
+
+  /* Content: mobile — centered overlay */
+  .hero-content {
+    max-width: 56rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  /* ── Desktop: side-by-side layout ── */
+  @media (min-width: 1024px) {
+
+    /* Image layers → physical left ~62% */
+    .hero-parallax-layer {
+      inset: 0 38% 0 0;
+    }
+
+    .hero-parallax-bg {
+      inset: -20px 36% -20px -20px;
+    }
+
+    .hero-glow-inner {
+      background: radial-gradient(ellipse 60% 50% at 45% 40%, rgba(224, 104, 90, 0.08) 0%, transparent 70%);
+    }
+
+    /* Image: larger, pushed up, radial fade into black on all edges */
+    .hero-bg {
+      background-position: center -160px;
+      transform: scale(0.95);
+      mask-image: radial-gradient(ellipse 54% 50% at 48% 36%, black 32%, rgba(0,0,0,0.35) 62%, transparent 88%);
+      -webkit-mask-image: radial-gradient(ellipse 54% 50% at 48% 36%, black 32%, rgba(0,0,0,0.35) 62%, transparent 88%);
+    }
+
+    /* Soft dark gradient at the bottom — smooths the final transition to pure black */
+    .hero-frost {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: linear-gradient(to bottom, transparent 58%, rgba(0,0,0,0.4) 76%, black 92%);
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+
+    /* Content → physical right side, vertically centered
+       margin-inline must come BEFORE physical margins so they win */
+    .hero-content {
+      max-width: 40%;
+      margin-inline: unset;
+      margin-left: auto;
+      margin-right: 3rem;
+      text-align: start;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-content {
+      margin-right: 5rem;
+    }
+  }
+
+  @keyframes nudge-x {
+    0%, 70% { transform: translateX(0); }
+    80%     { transform: translateX(4px); }
+    90%     { transform: translateX(0); }
+  }
+
+  .animate-nudge-x {
+    animation: nudge-x 3s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-parallax-layer {
+      transform: none !important;
+    }
+    .animate-nudge-x {
+      animation: none;
+    }
+  }
+</style>

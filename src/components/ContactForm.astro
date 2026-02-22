@@ -1,0 +1,250 @@
+---
+import type { Locale, Translations } from "@i18n/types";
+import Button from "./Button.astro";
+
+interface Props {
+  t: Translations["contact"]["form"];
+  validation: Translations["contact"]["validation"];
+  locale: Locale;
+}
+
+const { t, validation, locale } = Astro.props;
+---
+
+<form
+  id="contact-form"
+  action="https://formspree.io/f/xwpkkqjd"
+  method="POST"
+  class="space-y-5"
+  novalidate
+>
+  <!-- Honeypot -->
+  <div style="position: absolute; left: -9999px;" aria-hidden="true">
+    <label>
+      Don't fill this out
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+    </label>
+  </div>
+
+  <input type="hidden" name="_language" value={locale} />
+
+  <div>
+    <label for="name" class="block text-[0.875rem] font-medium leading-[1.4] tracking-[0.01em] text-text-primary mb-1.5">
+      {t.name}
+    </label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder={t.namePlaceholder}
+      required
+      minlength="2"
+      class="w-full min-h-[48px] rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+    />
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="name"></p>
+  </div>
+
+  <div>
+    <label for="email" class="block text-[0.875rem] font-medium leading-[1.4] tracking-[0.01em] text-text-primary mb-1.5">
+      {t.email}
+    </label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder={t.emailPlaceholder}
+      required
+      class="w-full min-h-[48px] rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+    />
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="email"></p>
+  </div>
+
+  <div>
+    <label for="company" class="block text-[0.875rem] font-medium leading-[1.4] tracking-[0.01em] text-text-primary mb-1.5">
+      {t.company}
+    </label>
+    <input
+      type="text"
+      id="company"
+      name="company"
+      placeholder={t.companyPlaceholder}
+      required
+      minlength="2"
+      class="w-full min-h-[48px] rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+    />
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="company"></p>
+  </div>
+
+  <div>
+    <label for="phone" class="block text-[0.875rem] font-medium leading-[1.4] tracking-[0.01em] text-text-primary mb-1.5">
+      {t.phone}
+    </label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      placeholder={t.phonePlaceholder}
+      class="w-full min-h-[48px] rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+    />
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="phone"></p>
+  </div>
+
+  <div>
+    <label for="message" class="block text-[0.875rem] font-medium leading-[1.4] tracking-[0.01em] text-text-primary mb-1.5">
+      {t.message}
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      placeholder={t.messagePlaceholder}
+      required
+      minlength="10"
+      rows="4"
+      class="w-full min-h-[120px] resize-y rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+    ></textarea>
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="message"></p>
+  </div>
+
+  <Button variant="primary" type="submit" class="w-full">
+    <span id="submit-text">{t.submit}</span>
+    <span id="submit-loading" class="hidden">{t.submitting}</span>
+  </Button>
+</form>
+
+<div id="form-success" class="hidden text-center py-12">
+  <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent-soft">
+    <svg class="h-8 w-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+    </svg>
+  </div>
+  <h3 class="text-[1.25rem] font-semibold text-text-primary">{t.successTitle}</h3>
+  <p class="mt-2 text-base text-text-secondary">{t.successMessage}</p>
+</div>
+
+<div id="form-error" class="hidden text-center py-8">
+  <h3 class="text-[1.25rem] font-semibold text-[#DC2626]">{t.errorTitle}</h3>
+  <p class="mt-2 text-base text-text-secondary">{t.errorMessage}</p>
+</div>
+
+<script is:inline define:vars={{ validation }}>
+  const form = document.getElementById("contact-form");
+  const successEl = document.getElementById("form-success");
+  const errorEl = document.getElementById("form-error");
+
+  if (form) {
+    function showError(field, message) {
+      const errorEl = form.querySelector(`[data-error="${field}"]`);
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.classList.remove("hidden");
+      }
+      const input = form.querySelector(`#${field}`);
+      if (input) {
+        input.classList.add("border-[#DC2626]");
+        input.setAttribute("aria-describedby", `${field}-error`);
+      }
+    }
+
+    function clearErrors() {
+      form.querySelectorAll(".form-error").forEach((el) => {
+        el.classList.add("hidden");
+        el.textContent = "";
+      });
+      form.querySelectorAll("input, textarea").forEach((el) => {
+        el.classList.remove("border-[#DC2626]");
+        el.removeAttribute("aria-describedby");
+      });
+    }
+
+    function validateForm() {
+      clearErrors();
+      let valid = true;
+      const data = new FormData(form);
+
+      const name = (data.get("name") || "").toString().trim();
+      if (!name) {
+        showError("name", validation.nameRequired);
+        valid = false;
+      } else if (name.length < 2) {
+        showError("name", validation.nameMin);
+        valid = false;
+      }
+
+      const email = (data.get("email") || "").toString().trim();
+      if (!email) {
+        showError("email", validation.emailRequired);
+        valid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError("email", validation.emailInvalid);
+        valid = false;
+      }
+
+      const company = (data.get("company") || "").toString().trim();
+      if (!company) {
+        showError("company", validation.companyRequired);
+        valid = false;
+      } else if (company.length < 2) {
+        showError("company", validation.companyMin);
+        valid = false;
+      }
+
+      const phone = (data.get("phone") || "").toString().trim();
+      if (phone && !/^[+\d\s\-()]{7,20}$/.test(phone)) {
+        showError("phone", validation.phoneInvalid);
+        valid = false;
+      }
+
+      const message = (data.get("message") || "").toString().trim();
+      if (!message) {
+        showError("message", validation.messageRequired);
+        valid = false;
+      } else if (message.length < 10) {
+        showError("message", validation.messageMin);
+        valid = false;
+      }
+
+      return valid;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!validateForm()) return;
+
+      const submitText = document.getElementById("submit-text");
+      const submitLoading = document.getElementById("submit-loading");
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      if (submitText) submitText.classList.add("hidden");
+      if (submitLoading) submitLoading.classList.remove("hidden");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add("opacity-60");
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          form.classList.add("hidden");
+          successEl?.classList.remove("hidden");
+        } else {
+          errorEl?.classList.remove("hidden");
+        }
+      } catch {
+        errorEl?.classList.remove("hidden");
+      } finally {
+        if (submitText) submitText.classList.remove("hidden");
+        if (submitLoading) submitLoading.classList.add("hidden");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("opacity-60");
+        }
+      }
+    });
+  }
+</script>
