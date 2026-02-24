@@ -15,13 +15,13 @@ No test framework is configured. Validate changes with `npm run build` (catches 
 
 ## Architecture
 
-**Static bilingual corporate site** built with Astro 5 + Tailwind CSS v4. Deployed to GitHub Pages via `withastro/action@v5` (Node 22, push to `main` triggers deploy). Site URL: `https://yehonatan-tal.github.io/NLX-Labs-website/`
+**Static bilingual corporate site** built with Astro 5 + Tailwind CSS v4. Deployed to GitHub Pages via `withastro/action@v5` (Node 22, push to `main` triggers deploy). Custom domain: `https://nlxlabs.co.il`
 
 ### i18n: Path-Based Routing
 
-- Hebrew (default, RTL): `/NLX-Labs-website/`
-- English (LTR): `/NLX-Labs-website/en/`
-- Each locale has its own page files: `src/pages/index.astro` (he) and `src/pages/en/index.astro` (en). Same pattern for `privacy.astro`.
+- English (default, LTR): `/`
+- Hebrew (RTL): `/he/`
+- Each locale has its own page files: `src/pages/index.astro` (en) and `src/pages/he/index.astro` (he). Same pattern for legal pages.
 - Translations are typed JSON: `src/i18n/en.json`, `src/i18n/he.json`
 - Types defined in `src/i18n/types.ts` — all translation keys are typed via the `Translations` interface
 - `src/i18n/i18n.ts` exports: `getLocaleFromUrl()`, `getTranslations()`, `getDirection()`, `getAlternateUrl()`, `getFontFamily()`

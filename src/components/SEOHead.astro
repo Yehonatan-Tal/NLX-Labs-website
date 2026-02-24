@@ -18,12 +18,12 @@ const canonicalUrl = currentUrl.toString();
 <meta property="og:description" content={meta.ogDescription} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalUrl} />
-<meta property="og:image" content={new URL("/NLX-Labs-website/og-image.png", Astro.site).toString()} />
+<meta property="og:image" content={new URL("/og-image.png", Astro.site).toString()} />
 <meta property="og:locale" content={locale === "he" ? "he_IL" : "en_US"} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={meta.ogTitle} />
 <meta name="twitter:description" content={meta.ogDescription} />
-<meta name="twitter:image" content={new URL("/NLX-Labs-website/og-image.png", Astro.site).toString()} />
+<meta name="twitter:image" content={new URL("/og-image.png", Astro.site).toString()} />
 <link rel="canonical" href={canonicalUrl} />
 {LOCALES.map((l) => (
   <link

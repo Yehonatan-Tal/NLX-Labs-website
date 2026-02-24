@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yehonatan-tal.github.io/NLX-Labs-website/sitemap-index.xml
+Sitemap: https://nlxlabs.co.il/sitemap-index.xml

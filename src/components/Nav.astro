@@ -28,12 +28,12 @@ const homeHref = locale === "he" ? `${base}he/` : base;
     <nav
       data-nav
       dir="ltr"
-      class="relative flex h-14 items-center justify-between px-5 lg:px-6"
+      class="relative flex h-[3.75rem] items-center justify-between px-6 lg:px-7"
       aria-label="Main navigation"
     >
       <!-- Logo (left) -->
       <a href={homeHref} class="flex-shrink-0 relative z-10" aria-label="NLX-labs home">
-        <img src={logo.src} alt="NLX Labs" class="h-8 w-auto" />
+        <img src={logo.src} alt="NLX Labs" class="h-[2.14rem] w-auto" />
       </a>
 
       <!-- Centered nav links -->
@@ -42,7 +42,7 @@ const homeHref = locale === "he" ? `${base}he/` : base;
           {navLinks.map((link) => (
             <a
               href={link.href}
-              class="nav-link rounded-lg px-3.5 py-1.5 text-[0.875rem] font-medium text-white/60 transition-all duration-150 hover:text-white hover:bg-white/[0.06]"
+              class="nav-link rounded-lg px-4 py-2 text-[0.9375rem] font-medium text-white/60 transition-all duration-150 hover:text-white hover:bg-white/[0.06]"
               data-section={link.href.replace("#", "")}
             >
               {link.label}
@@ -55,18 +55,18 @@ const homeHref = locale === "he" ? `${base}he/` : base;
       <div dir="ltr" class="flex items-center gap-3 relative z-10">
         <a
           href="#contact"
-          class="hidden lg:inline-flex items-center justify-center rounded-lg bg-white/[0.1] border border-white/[0.08] px-4 py-1.5 text-[0.8125rem] font-medium text-white transition-all duration-200 hover:bg-white/[0.16] hover:border-white/[0.14]"
+          class="hidden lg:inline-flex items-center justify-center rounded-lg bg-white/[0.1] border border-white/[0.08] px-[1.1rem] py-2 text-[0.875rem] font-medium text-white transition-all duration-200 hover:bg-white/[0.16] hover:border-white/[0.14]"
         >
           {t.contact}
         </a>
         <button
           id="menu-toggle"
-          class="flex lg:hidden items-center justify-center w-10 h-10 text-white"
+          class="flex lg:hidden items-center justify-center w-[2.7rem] h-[2.7rem] text-white"
           aria-label={t.menuOpen}
           aria-expanded="false"
           aria-controls="mobile-menu"
         >
-          <Menu size={22} />
+          <Menu size={24} />
         </button>
         <LanguageToggle locale={locale} label={t.languageToggle} />
       </div>
