@@ -15,7 +15,7 @@ No test framework is configured. Validate changes with `npm run build` (catches 
 
 ## Architecture
 
-**Static bilingual corporate site** built with Astro 5 + Tailwind CSS v4. Deployed to GitHub Pages via `withastro/action@v5` (Node 22, push to `main` triggers deploy). Custom domain: `https://nlxlabs.co.il`
+**Static bilingual corporate site** built with Astro 5 + Tailwind CSS v4. Deployed to GitHub Pages via `withastro/action@v5` (Node 22, push to `main` triggers deploy). Custom domain: `https://nlxlabs.co.il` — configured in both `astro.config.mjs` (`site`) and `public/CNAME`; keep them in sync if the domain changes. Code formatting via Prettier with `prettier-plugin-astro` (see `.prettierrc`).
 
 ### i18n: Path-Based Routing
 
@@ -62,11 +62,20 @@ Uses Tailwind v4 logical properties: `ps-*`, `pe-*`, `ms-*`, `me-*`, `start-*`, 
 
 `@/*`, `@components/*`, `@layouts/*`, `@i18n/*`, `@assets/*`, `@styles/*` all map to `src/` subdirectories.
 
+### Pages
+
+Beyond the homepage (`index.astro` / `he/index.astro`), the site has legal pages: `privacy`, `terms`, `cookies`, `accessibility` (each with an English and Hebrew version under `he/`), plus a `404.astro` error page.
+
 ### External Integrations
 
-- **Formspree** (`xwpkkqjd`): Contact form submission in `ContactForm.astro`, includes client-side validation with translated error messages
+- **Formspree** (`xwpkkqjd`): Contact form submission in `ContactForm.astro`, includes client-side validation with translated error messages and a `_gotcha` honeypot field for anti-spam
+- **Google Analytics**: gtag.js with measurement ID `G-MM6JQ6LR47`, loaded inline in `Layout.astro`
 - **Google Fonts**: Inter (English) + Rubik (Hebrew) + Noto Sans Mono (code/terminal). Loaded in `Layout.astro`.
 - **Lucide**: Icons via `@lucide/astro` (not `lucide-astro`)
+
+### SEO
+
+`SEOHead.astro` handles meta/og/twitter tags and hreflang alternates. `JsonLd.astro` emits schema.org structured data. Astro auto-generates `sitemap-index.xml` (referenced by `public/robots.txt`). OG image at `public/og-image.png`.
 
 ### Scroll Animations (GSAP)
 

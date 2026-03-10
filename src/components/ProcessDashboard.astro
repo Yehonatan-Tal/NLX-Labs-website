@@ -95,21 +95,52 @@ const { steps } = Astro.props;
     <div class="db-body">
       <!-- Phase 0: Discovery -->
       <div class="db-phase db-phase-active" data-phase-panel="0" role="tabpanel">
-        <div class="db-panel">
+        <div class="db-panel db-workflow-panel">
           <div class="db-panel-label">Workflow Map</div>
-          <svg class="db-node-graph" viewBox="0 0 180 100" fill="none" aria-hidden="true">
-            <line x1="28" y1="25" x2="90" y2="15" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
-            <line x1="90" y1="15" x2="152" y2="30" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
-            <line x1="28" y1="25" x2="55" y2="75" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
-            <line x1="55" y1="75" x2="125" y2="72" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
-            <line x1="125" y1="72" x2="152" y2="30" stroke="rgba(224,104,90,0.3)" stroke-width="1.5"/>
-            <line x1="90" y1="15" x2="55" y2="75" stroke="rgba(224,104,90,0.15)" stroke-width="1"/>
-            <circle cx="28" cy="25" r="5" class="db-node" style="animation-delay:0s"/>
-            <circle cx="90" cy="15" r="5" class="db-node" style="animation-delay:0.4s"/>
-            <circle cx="152" cy="30" r="5" class="db-node" style="animation-delay:0.8s"/>
-            <circle cx="55" cy="75" r="5" class="db-node" style="animation-delay:1.2s"/>
-            <circle cx="125" cy="72" r="5" class="db-node" style="animation-delay:1.6s"/>
-          </svg>
+          <div class="db-tree" aria-hidden="true">
+            <div class="db-tree-node">
+              <span class="db-tree-dot" style="animation-delay:0s"></span>
+              <span class="db-tree-name">Intake</span>
+              <span class="db-tree-time">120ms</span>
+            </div>
+            <div class="db-tree-vline"></div>
+            <div class="db-tree-node">
+              <span class="db-tree-dot" style="animation-delay:0.3s"></span>
+              <span class="db-tree-name">Triage</span>
+              <span class="db-tree-time">85ms</span>
+            </div>
+            <div class="db-tree-vline"></div>
+            <div class="db-tree-split">
+              <div class="db-tree-arm">
+                <div class="db-tree-arm-vline"></div>
+                <div class="db-tree-node">
+                  <span class="db-tree-dot" style="animation-delay:0.6s"></span>
+                  <span class="db-tree-name">Validate</span>
+                </div>
+                <div class="db-tree-arm-vline"></div>
+              </div>
+              <div class="db-tree-arm">
+                <div class="db-tree-arm-vline"></div>
+                <div class="db-tree-node">
+                  <span class="db-tree-dot" style="animation-delay:0.9s"></span>
+                  <span class="db-tree-name">Enrich</span>
+                </div>
+                <div class="db-tree-arm-vline"></div>
+              </div>
+            </div>
+            <div class="db-tree-vline"></div>
+            <div class="db-tree-node">
+              <span class="db-tree-dot" style="animation-delay:1.2s"></span>
+              <span class="db-tree-name">Process</span>
+              <span class="db-tree-time">200ms</span>
+            </div>
+            <div class="db-tree-vline"></div>
+            <div class="db-tree-node db-tree-node--done">
+              <span class="db-tree-dot" style="animation-delay:1.5s"></span>
+              <span class="db-tree-name">Output</span>
+              <span class="db-tree-time db-tree-time--total">~405ms</span>
+            </div>
+          </div>
         </div>
         <div class="db-panel">
           <div class="db-panel-label">Opportunity Analysis</div>
@@ -228,18 +259,63 @@ const { steps } = Astro.props;
 
       <!-- Phase 3: Support -->
       <div class="db-phase" data-phase-panel="3" role="tabpanel">
-        <div class="db-panel">
+        <div class="db-panel db-chart-panel">
           <div class="db-panel-label">Performance</div>
-          <svg class="db-chart" viewBox="0 0 180 80" fill="none" aria-hidden="true">
+          <svg class="db-chart" viewBox="0 0 200 100" fill="none" aria-hidden="true">
             <defs>
               <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="var(--color-accent)"/>
                 <stop offset="100%" stop-color="transparent"/>
               </linearGradient>
             </defs>
-            <polyline class="db-chart-area" points="0,68 25,62 50,55 75,48 100,38 125,28 150,18 180,10 180,80 0,80" fill="url(#chartGrad)" opacity="0.3"/>
-            <polyline class="db-chart-line" points="0,68 25,62 50,55 75,48 100,38 125,28 150,18 180,10" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Y-axis -->
+            <line x1="30" y1="10" x2="30" y2="82" stroke="rgba(255,255,255,0.1)" stroke-width="0.75"/>
+            <!-- X-axis -->
+            <line x1="30" y1="82" x2="192" y2="82" stroke="rgba(255,255,255,0.1)" stroke-width="0.75"/>
+            <!-- Horizontal grid lines -->
+            <line x1="30" y1="22" x2="192" y2="22" stroke="rgba(255,255,255,0.04)" stroke-width="0.5" stroke-dasharray="3,3"/>
+            <line x1="30" y1="42" x2="192" y2="42" stroke="rgba(255,255,255,0.04)" stroke-width="0.5" stroke-dasharray="3,3"/>
+            <line x1="30" y1="62" x2="192" y2="62" stroke="rgba(255,255,255,0.04)" stroke-width="0.5" stroke-dasharray="3,3"/>
+            <!-- Y-axis labels -->
+            <text x="26" y="24" text-anchor="end" class="db-chart-label">100</text>
+            <text x="26" y="44" text-anchor="end" class="db-chart-label">75</text>
+            <text x="26" y="64" text-anchor="end" class="db-chart-label">50</text>
+            <text x="26" y="84" text-anchor="end" class="db-chart-label">25</text>
+            <!-- X-axis labels (weeks) -->
+            <text x="38" y="94" text-anchor="middle" class="db-chart-label">W1</text>
+            <text x="65" y="94" text-anchor="middle" class="db-chart-label">W2</text>
+            <text x="92" y="94" text-anchor="middle" class="db-chart-label">W3</text>
+            <text x="119" y="94" text-anchor="middle" class="db-chart-label">W4</text>
+            <text x="146" y="94" text-anchor="middle" class="db-chart-label">W5</text>
+            <text x="173" y="94" text-anchor="middle" class="db-chart-label">W6</text>
+            <!-- Y-axis tick marks -->
+            <line x1="28" y1="22" x2="30" y2="22" stroke="rgba(255,255,255,0.15)" stroke-width="0.75"/>
+            <line x1="28" y1="42" x2="30" y2="42" stroke="rgba(255,255,255,0.15)" stroke-width="0.75"/>
+            <line x1="28" y1="62" x2="30" y2="62" stroke="rgba(255,255,255,0.15)" stroke-width="0.75"/>
+            <line x1="28" y1="82" x2="30" y2="82" stroke="rgba(255,255,255,0.15)" stroke-width="0.75"/>
+            <!-- Area fill -->
+            <polyline class="db-chart-area" points="38,72 52,68 65,60 79,55 92,46 106,40 119,34 133,28 146,22 160,18 173,14 186,12 186,82 38,82" fill="url(#chartGrad)" opacity="0.25"/>
+            <!-- Main line (realistic upward trend with small dips) -->
+            <polyline class="db-chart-line" points="38,72 52,68 65,60 79,55 92,46 106,40 119,34 133,28 146,22 160,18 173,14 186,12" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Data point markers -->
+            <circle cx="38" cy="72" r="2.2" fill="var(--color-accent)" class="db-chart-dot"/>
+            <circle cx="65" cy="60" r="2.2" fill="var(--color-accent)" class="db-chart-dot"/>
+            <circle cx="92" cy="46" r="2.2" fill="var(--color-accent)" class="db-chart-dot"/>
+            <circle cx="119" cy="34" r="2.2" fill="var(--color-accent)" class="db-chart-dot"/>
+            <circle cx="146" cy="22" r="2.2" fill="var(--color-accent)" class="db-chart-dot"/>
+            <circle cx="186" cy="12" r="2.2" fill="var(--color-accent)" class="db-chart-dot"/>
+            <!-- Dot glows -->
+            <circle cx="38" cy="72" r="5" fill="var(--color-accent)" opacity="0.15" class="db-chart-dot"/>
+            <circle cx="65" cy="60" r="5" fill="var(--color-accent)" opacity="0.15" class="db-chart-dot"/>
+            <circle cx="92" cy="46" r="5" fill="var(--color-accent)" opacity="0.15" class="db-chart-dot"/>
+            <circle cx="119" cy="34" r="5" fill="var(--color-accent)" opacity="0.15" class="db-chart-dot"/>
+            <circle cx="146" cy="22" r="5" fill="var(--color-accent)" opacity="0.15" class="db-chart-dot"/>
+            <circle cx="186" cy="12" r="5" fill="var(--color-accent)" opacity="0.15" class="db-chart-dot"/>
           </svg>
+          <div class="db-chart-legend">
+            <span class="db-chart-legend-dot"></span>
+            <span class="db-chart-legend-text">Efficiency Score</span>
+          </div>
         </div>
         <div class="db-panel">
           <div class="db-panel-label">Optimization Log</div>
@@ -576,20 +652,118 @@ const { steps } = Astro.props;
     margin-bottom: 10px;
   }
 
-  /* ── Phase 0: Discovery — Node Graph ── */
-  .db-node-graph {
-    width: 100%;
-    height: auto;
+  /* ── Phase 0: Discovery — Workflow Tree ── */
+  .db-workflow-panel {
+    display: flex;
+    flex-direction: column;
   }
 
-  .db-node {
-    fill: var(--color-accent);
-    transform-box: fill-box;
-    transform-origin: center;
+  .db-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .db-phase-active .db-node {
-    animation: node-pulse 2s ease-in-out infinite;
+  .db-tree-node {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    background: rgba(224, 104, 90, 0.06);
+    border: 1px solid rgba(224, 104, 90, 0.15);
+    white-space: nowrap;
+  }
+
+  .db-tree-node--done {
+    background: rgba(40, 200, 64, 0.06);
+    border-color: rgba(40, 200, 64, 0.2);
+  }
+
+  .db-tree-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 6px rgba(224, 104, 90, 0.4);
+    flex-shrink: 0;
+  }
+
+  .db-tree-node--done .db-tree-dot {
+    background: #28c840;
+    box-shadow: 0 0 6px rgba(40, 200, 64, 0.4);
+  }
+
+  .db-phase-active .db-tree-dot {
+    animation: node-pulse-html 2s ease-in-out infinite;
+  }
+
+  .db-tree-name {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .db-tree-time {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: rgba(255, 255, 255, 0.25);
+  }
+
+  .db-tree-time--total {
+    color: rgba(40, 200, 64, 0.5);
+    font-weight: 600;
+  }
+
+  /* Main trunk vertical line */
+  .db-tree-vline {
+    width: 1px;
+    height: 10px;
+    background: rgba(224, 104, 90, 0.25);
+  }
+
+  /* Fork/merge split container */
+  .db-tree-split {
+    display: flex;
+    width: 82%;
+    position: relative;
+  }
+
+  /* Top horizontal bar (fork) */
+  .db-tree-split::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    background: rgba(224, 104, 90, 0.2);
+  }
+
+  /* Bottom horizontal bar (merge) */
+  .db-tree-split::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    background: rgba(224, 104, 90, 0.2);
+  }
+
+  /* Each branch arm */
+  .db-tree-arm {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Vertical connector within arm (fork drop / merge rise) */
+  .db-tree-arm-vline {
+    width: 1px;
+    height: 10px;
+    background: rgba(224, 104, 90, 0.2);
   }
 
   /* ── Phase 0: Discovery — Findings ── */
@@ -777,20 +951,66 @@ const { steps } = Astro.props;
   }
 
   /* ── Phase 3: Support — Chart ── */
+  .db-chart-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
   .db-chart {
     width: 100%;
     height: auto;
+    flex: 1;
+  }
+
+  .db-chart-label {
+    font-size: 7px;
+    fill: rgba(255, 255, 255, 0.3);
+    font-family: var(--font-mono);
   }
 
   .db-chart-line {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
     transition: stroke-dashoffset 1.5s ease-out;
     filter: drop-shadow(0 0 4px rgba(224, 104, 90, 0.4));
   }
 
   .db-phase-active .db-chart-line {
     stroke-dashoffset: 0;
+  }
+
+  .db-chart-dot {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+  }
+
+  .db-phase-active .db-chart-dot {
+    opacity: 1;
+    transition-delay: 1.2s;
+  }
+
+  .db-chart-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    padding-inline-start: 30px;
+  }
+
+  .db-chart-legend-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 6px rgba(224, 104, 90, 0.4);
+    flex-shrink: 0;
+  }
+
+  .db-chart-legend-text {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   /* ── Phase 3: Support — Optimization Log ── */
@@ -945,6 +1165,11 @@ const { steps } = Astro.props;
     50% { opacity: 1; transform: scale(1.4); }
   }
 
+  @keyframes node-pulse-html {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(4px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1060,7 +1285,8 @@ const { steps } = Astro.props;
       animation: none;
     }
 
-    .db-phase-active .db-node {
+    .db-phase-active .db-node,
+    .db-phase-active .db-tree-dot {
       animation: none;
     }
 
