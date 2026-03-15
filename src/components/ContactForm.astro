@@ -13,7 +13,7 @@ const { t, validation, locale } = Astro.props;
 
 <form
   id="contact-form"
-  action="https://formspree.io/f/xwpkkqjd"
+  action="https://formspree.io/f/xkoqvbbd"
   method="POST"
   class="space-y-5"
   novalidate
@@ -68,8 +68,6 @@ const { t, validation, locale } = Astro.props;
       id="company"
       name="company"
       placeholder={t.companyPlaceholder}
-      required
-      minlength="2"
       class="w-full min-h-[48px] rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
     />
     <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="company"></p>
@@ -176,15 +174,6 @@ const { t, validation, locale } = Astro.props;
         valid = false;
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         showError("email", validation.emailInvalid);
-        valid = false;
-      }
-
-      const company = (data.get("company") || "").toString().trim();
-      if (!company) {
-        showError("company", validation.companyRequired);
-        valid = false;
-      } else if (company.length < 2) {
-        showError("company", validation.companyMin);
         valid = false;
       }
 

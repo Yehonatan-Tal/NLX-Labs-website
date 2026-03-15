@@ -155,7 +155,7 @@
       "namePlaceholder": "John Doe",
       "email": "Email",
       "emailPlaceholder": "john@company.com",
-      "company": "Company",
+      "company": "Company (optional)",
       "companyPlaceholder": "Company Name",
       "phone": "Phone (optional)",
       "phonePlaceholder": "+972-XX-XXX-XXXX",
