@@ -13,6 +13,10 @@ npx astro check      # TypeScript + Astro diagnostics
 
 No test framework is configured. Validate changes with `npm run build` (catches TypeScript and Astro errors).
 
+## Accessibility (IS 5568 / WCAG 2.0 AA — mandatory)
+
+This site must conform to Israeli Standard **IS 5568** at Level AA (≡ WCAG 2.0 AA). For any UI change, read `.claude/rules/accessibility.md` first — it has the hard rules, the AA-compliant token cheat sheet, and the pre-merge checklist. Statement page lives at `/accessibility` (and `/he/accessibility`); the named accessibility coordinator is Yonatan Tal. **Never add accessibility-overlay widgets** — discreet, built-in a11y only.
+
 ## Architecture
 
 **Static bilingual corporate site** built with Astro 5 + Tailwind CSS v4. Deployed to GitHub Pages via `withastro/action@v5` (Node 22, push to `main` triggers deploy). Custom domain: `https://nlxlabs.co.il` — configured in both `astro.config.mjs` (`site`) and `public/CNAME`; keep them in sync if the domain changes. Code formatting via Prettier with `prettier-plugin-astro` (see `.prettierrc`).

@@ -22,7 +22,7 @@ const base = raw.endsWith("/") ? raw : `${raw}/`;
       </h1>
       <p class="mt-3 text-[0.875rem] text-text-secondary">{t.accessibility.lastUpdated}</p>
       <div
-        class="mt-8 prose prose-gray max-w-none [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-[1.25rem] [&_h2]:font-semibold [&_h2]:text-text-primary [&_p]:text-[1.0625rem] [&_p]:leading-[1.7] [&_p]:text-text-secondary [&_p]:mb-4"
+        class="legal-prose mt-8 max-w-none [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:text-[1.25rem] [&_h2]:font-semibold [&_h2]:text-text-primary [&_p]:text-[1.0625rem] [&_p]:leading-[1.7] [&_p]:text-text-secondary [&_p]:mb-4 [&_ul]:mb-5 [&_ul]:ps-6 [&_ul]:list-disc [&_li]:text-[1.0625rem] [&_li]:leading-[1.7] [&_li]:text-text-secondary [&_li]:mb-2 [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:no-underline [&_strong]:text-text-primary [&_strong]:font-semibold [&_code]:font-mono [&_code]:text-[0.9em] [&_code]:rounded [&_code]:bg-[#F5F6F8] [&_code]:px-1.5 [&_code]:py-0.5"
         set:html={t.accessibility.content}
       />
       <div class="mt-12">
@@ -30,7 +30,7 @@ const base = raw.endsWith("/") ? raw : `${raw}/`;
           href={base}
           class="inline-flex items-center gap-2 text-accent font-medium transition-all duration-150 hover:underline hover:underline-offset-4"
         >
-          <svg class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
           </svg>
           Back to Home

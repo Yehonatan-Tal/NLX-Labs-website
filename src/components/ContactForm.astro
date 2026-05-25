@@ -30,7 +30,7 @@ const { t, validation, locale } = Astro.props;
 
   <div>
     <label for="name" class="block text-[0.875rem] font-medium leading-[1.4] tracking-[0.01em] text-text-primary mb-1.5">
-      {t.name}
+      {t.name}<span class="text-accent ms-0.5" aria-hidden="true">*</span>
     </label>
     <input
       type="text"
@@ -38,15 +38,16 @@ const { t, validation, locale } = Astro.props;
       name="name"
       placeholder={t.namePlaceholder}
       required
+      aria-required="true"
       minlength="2"
       class="w-full min-h-[48px] rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
     />
-    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="name"></p>
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" id="name-error" data-error="name"></p>
   </div>
 
   <div>
     <label for="email" class="block text-[0.875rem] font-medium leading-[1.4] tracking-[0.01em] text-text-primary mb-1.5">
-      {t.email}
+      {t.email}<span class="text-accent ms-0.5" aria-hidden="true">*</span>
     </label>
     <input
       type="email"
@@ -54,9 +55,10 @@ const { t, validation, locale } = Astro.props;
       name="email"
       placeholder={t.emailPlaceholder}
       required
+      aria-required="true"
       class="w-full min-h-[48px] rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
     />
-    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="email"></p>
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" id="email-error" data-error="email"></p>
   </div>
 
   <div>
@@ -70,7 +72,7 @@ const { t, validation, locale } = Astro.props;
       placeholder={t.companyPlaceholder}
       class="w-full min-h-[48px] rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
     />
-    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="company"></p>
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" id="company-error" data-error="company"></p>
   </div>
 
   <div>
@@ -84,23 +86,24 @@ const { t, validation, locale } = Astro.props;
       placeholder={t.phonePlaceholder}
       class="w-full min-h-[48px] rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
     />
-    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="phone"></p>
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" id="phone-error" data-error="phone"></p>
   </div>
 
   <div>
     <label for="message" class="block text-[0.875rem] font-medium leading-[1.4] tracking-[0.01em] text-text-primary mb-1.5">
-      {t.message}
+      {t.message}<span class="text-accent ms-0.5" aria-hidden="true">*</span>
     </label>
     <textarea
       id="message"
       name="message"
       placeholder={t.messagePlaceholder}
       required
+      aria-required="true"
       minlength="10"
       rows="4"
       class="w-full min-h-[120px] resize-y rounded-[0.5rem] border border-border-subtle bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-secondary/50 transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
     ></textarea>
-    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" data-error="message"></p>
+    <p class="form-error mt-1.5 hidden text-[0.8125rem] text-[#DC2626]" id="message-error" data-error="message"></p>
   </div>
 
   <Button variant="primary" type="submit" class="w-full">
@@ -109,9 +112,9 @@ const { t, validation, locale } = Astro.props;
   </Button>
 </form>
 
-<div id="form-success" class="hidden text-center py-12">
+<div id="form-success" class="hidden text-center py-12" role="status" aria-live="polite" aria-atomic="true">
   <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent-soft">
-    <svg class="h-8 w-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="h-8 w-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
     </svg>
   </div>
@@ -119,7 +122,7 @@ const { t, validation, locale } = Astro.props;
   <p class="mt-2 text-base text-text-secondary">{t.successMessage}</p>
 </div>
 
-<div id="form-error" class="hidden text-center py-8">
+<div id="form-error" class="hidden text-center py-8" role="alert" aria-live="assertive" aria-atomic="true">
   <h3 class="text-[1.25rem] font-semibold text-[#DC2626]">{t.errorTitle}</h3>
   <p class="mt-2 text-base text-text-secondary">{t.errorMessage}</p>
 </div>
@@ -208,6 +211,7 @@ const { t, validation, locale } = Astro.props;
       if (submitLoading) submitLoading.classList.remove("hidden");
       if (submitBtn) {
         submitBtn.disabled = true;
+        submitBtn.setAttribute("aria-busy", "true");
         submitBtn.classList.add("opacity-60");
       }
 
@@ -231,6 +235,7 @@ const { t, validation, locale } = Astro.props;
         if (submitLoading) submitLoading.classList.add("hidden");
         if (submitBtn) {
           submitBtn.disabled = false;
+          submitBtn.removeAttribute("aria-busy");
           submitBtn.classList.remove("opacity-60");
         }
       }

@@ -91,6 +91,8 @@ function onMouseLeave(): void {
 }
 
 export function initHeroParallax(): void {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
   const hero = document.getElementById("hero");
   glowEl = document.getElementById("hero-parallax-glow");
   bgEl = document.getElementById("hero-parallax-bg");

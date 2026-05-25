@@ -42,13 +42,14 @@ const { t } = Astro.props;
     <div class="mt-20 lg:mt-24">
       <!-- Toggle pill -->
       <div class="flex items-center justify-center mb-12 lg:mb-16" data-animate="fade-up">
-        <div class="abt-toggle" role="tablist">
+        <div class="abt-toggle" role="tablist" aria-label={t.title}>
           <button
             id="abt-tab-principles"
             class="abt-toggle-btn abt-toggle-active"
             role="tab"
             aria-selected="true"
             aria-controls="abt-panel-principles"
+            tabindex="0"
           >
             {t.principlesTab}
           </button>
@@ -58,6 +59,7 @@ const { t } = Astro.props;
             role="tab"
             aria-selected="false"
             aria-controls="abt-panel-founder"
+            tabindex="-1"
           >
             {t.founderTab}
           </button>
@@ -278,10 +280,12 @@ const { t } = Astro.props;
       // Move indicator to active button
       moveIndicator(activeBtn, true);
 
-      activeBtn.classList.add('abt-toggle-active');
-      activeBtn.setAttribute('aria-selected', 'true');
-      inactiveBtn.classList.remove('abt-toggle-active');
-      inactiveBtn.setAttribute('aria-selected', 'false');
+      activeBtn!.classList.add('abt-toggle-active');
+      activeBtn!.setAttribute('aria-selected', 'true');
+      activeBtn!.setAttribute('tabindex', '0');
+      inactiveBtn!.classList.remove('abt-toggle-active');
+      inactiveBtn!.setAttribute('aria-selected', 'false');
+      inactiveBtn!.setAttribute('tabindex', '-1');
 
       if (duration === 0) {
         outPanel.hidden = true;
@@ -327,6 +331,35 @@ const { t } = Astro.props;
 
     btnPrinciples.addEventListener('click', () => switchTo('principles'));
     btnFounder.addEventListener('click', () => switchTo('founder'));
+
+    // Keyboard nav: Arrow keys / Home / End cycle between tabs (WCAG tabs pattern)
+    function handleTablistKeydown(e: KeyboardEvent) {
+      const dir = document.documentElement.dir;
+      const next = dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
+      const prev = dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft';
+      const current = document.activeElement;
+      if (current !== btnPrinciples && current !== btnFounder) return;
+
+      let target: HTMLElement | null = null;
+      if (e.key === next || e.key === 'ArrowDown') {
+        target = current === btnPrinciples ? btnFounder : btnPrinciples;
+      } else if (e.key === prev || e.key === 'ArrowUp') {
+        target = current === btnFounder ? btnPrinciples : btnFounder;
+      } else if (e.key === 'Home') {
+        target = btnPrinciples;
+      } else if (e.key === 'End') {
+        target = btnFounder;
+      }
+
+      if (target) {
+        e.preventDefault();
+        target.focus();
+        switchTo(target === btnFounder ? 'founder' : 'principles');
+      }
+    }
+
+    btnPrinciples.addEventListener('keydown', handleTablistKeydown);
+    btnFounder.addEventListener('keydown', handleTablistKeydown);
   }
 
   if (document.readyState === 'loading') {

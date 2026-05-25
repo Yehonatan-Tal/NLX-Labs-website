@@ -42,7 +42,7 @@ const homeHref = locale === "he" ? `${base}he/` : base;
           {navLinks.map((link) => (
             <a
               href={link.href}
-              class="nav-link rounded-lg px-4 py-2 text-[0.9375rem] font-medium text-white/60 transition-all duration-150 hover:text-white hover:bg-white/[0.06]"
+              class="nav-link rounded-lg px-4 py-2 text-[0.9375rem] font-medium text-white/75 transition-all duration-150 hover:text-white hover:bg-white/[0.06]"
               data-section={link.href.replace("#", "")}
             >
               {link.label}
@@ -61,12 +61,12 @@ const homeHref = locale === "he" ? `${base}he/` : base;
         </a>
         <button
           id="menu-toggle"
-          class="flex lg:hidden items-center justify-center w-[2.7rem] h-[2.7rem] text-white"
+          class="flex lg:hidden items-center justify-center w-11 h-11 text-white"
           aria-label={t.menuOpen}
           aria-expanded="false"
           aria-controls="mobile-menu"
         >
-          <Menu size={24} />
+          <Menu size={24} aria-hidden="true" focusable="false" />
         </button>
         <LanguageToggle locale={locale} label={t.languageToggle} />
       </div>
